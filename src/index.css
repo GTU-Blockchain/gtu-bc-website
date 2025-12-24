@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-text {
+  background: linear-gradient(to right, #012A4D, #1d97aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(#1d97aa 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.05;
+}
+
+html {
+  scroll-behavior: smooth;
+}
