@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import JoinSection from './components/JoinSection'
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -388,25 +389,7 @@ function App() {
       </section>
 
       {/* Join Section */}
-      <section className="py-20 bg-navy-dark relative overflow-hidden" id="join">
-        <div className="absolute inset-0 bg-primary/10" style={{ backgroundImage: "radial-gradient(#1d97aa 1px, transparent 1px)", backgroundSize: "30px 30px", opacity: 0.1 }}></div>
-        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Geleceği Birlikte Kodlayalım</h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-            GTU Blockchain ailesinin bir parçası olmak, projelerde yer almak ve kendini geliştirmek için hemen başvurunu yap.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a className="flex items-center justify-center gap-2 px-8 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-xl transition-all shadow-lg shadow-primary/30" href="#">
-              <span className="material-symbols-outlined">edit_document</span>
-              Üyelik Formu
-            </a>
-            <a className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur text-white font-bold rounded-xl transition-all" href="#">
-              <span className="material-symbols-outlined">group_add</span>
-              Komite Başvuru Formu
-            </a>
-          </div>
-        </div>
-      </section>
+      <JoinSection />
 
       {/* Contact & Footer */}
       <footer className="bg-background-dark text-white pt-20 pb-10 border-t border-gray-800" id="contact">
