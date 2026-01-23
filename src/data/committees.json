@@ -1,0 +1,41 @@
+[
+    {
+        "id": "software",
+        "name": "Yazılım & Ar-Ge",
+        "icon": "terminal",
+        "description": "Blokzincir teknolojisinin temellerinden ileri seviye akıllı kontrat geliştirmelerine kadar geniş bir yelpazede projeler üretiyoruz. Hem teorik bilgi birikimini artırıyor hem de dApp geliştirme, güvenlik denetimi ve ölçeklenebilirlik çözümleri üzerine pratik çalışmalar yapıyoruz.",
+        "features": [
+            "Solidity & Rust ile Akıllı Kontrat Geliştirme",
+            "Merkeziyetsiz Uygulama (dApp) Mimarisi",
+            "Web3 Entegrasyonu ve Frontend Geliştirme",
+            "Sıfır Bilgi Kanıtları (Zero-Knowledge Proofs)",
+            "Teknik Atölyeler ve Hackathon Hazırlıkları"
+        ]
+    },
+    {
+        "id": "media",
+        "name": "Medya & İletişim",
+        "icon": "campaign",
+        "description": "Topluluğumuzun sesini duyurmak ve blokzincir farkındalığını artırmak için stratejik içerikler üretiyoruz. Sosyal medya yönetimi, görsel tasarım, video prodüksiyon ve blog yazarlığı gibi alanlarda yetkinlik kazanarak ekosistemdeki gelişmeleri en doğru şekilde aktarıyoruz.",
+        "features": [
+            "Sosyal Medya Stratejisi ve Yönetimi",
+            "İçerik Pazarlama ve Blog Yazarlığı",
+            "Grafik Tasarım ve Görsel İletişim",
+            "Video Prodüksiyon ve Kurgu",
+            "Topluluk Yönetimi ve Etkileşim"
+        ]
+    },
+    {
+        "id": "events",
+        "name": "Etkinlik & Organizasyon",
+        "icon": "event",
+        "description": "Ekosistemin önde gelen isimlerini öğrencilerle buluşturan zirveler, teknik eğitim kampları ve networking etkinlikleri düzenliyoruz. Organizasyon yeteneğimizi geliştirirken, sektör profesyonelleriyle birebir iletişim kurma fırsatı yakalıyor ve topluluk bağlarını güçlendiriyoruz.",
+        "features": [
+            "Büyük Ölçekli Zirve ve Konferanslar",
+            "Teknik Bootcamp ve Eğitim Kampları",
+            "Hackathon ve Ideathon Organizasyonları",
+            "Networking ve Tanışma Toplantıları",
+            "Sponsorluk ve Paydaş İlişkileri"
+        ]
+    }
+]

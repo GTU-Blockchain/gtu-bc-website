@@ -1,7 +1,23 @@
 import { useState, useEffect } from 'react'
 import JoinSection from './components/JoinSection'
+import committeesData from './data/committees.json';
+import managementData from './data/management.json';
+import socialLinksData from './data/socialLinks.json';
+import CommitteeCard from './components/CommitteeCard';
+import TeamMemberCard from './components/TeamMemberCard';
+import { RiTwitterXFill } from "react-icons/ri";
+import { SiGithub } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
+
+const iconMap: { [key: string]: React.ElementType } = {
+  twitter: RiTwitterXFill,
+  linkedin: FaLinkedin,
+  github: SiGithub
+};
+
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeCommittee, setActiveCommittee] = useState<string | null>("software");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -300,89 +316,97 @@ function App() {
       <section className="py-24 bg-white" id="team">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-primary font-bold text-lg mb-2 uppercase tracking-wider">Ekibimiz</h2>
-            <h3 className="text-4xl font-bold text-navy-dark">Yönetim ve Komiteler</h3>
+            <h2 className="text-primary font-bold text-2xl mb-2 uppercase tracking-wider">EKİBİMİZ</h2>
+            <h3 className="text-5xl font-bold text-navy-dark">Yönetim ve Komiteler</h3>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">Topluluğumuzu ileriye taşıyan tutkulu liderler ve çalışkan ekiplerimiz.</p>
           </div>
           {/* Board */}
           <div className="mb-16">
-            <h4 className="text-2xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">Yönetim Kurulu</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Member 1 */}
-              <div className="group">
-                <div className="aspect-square rounded-2xl overflow-hidden mb-4 bg-gray-100 relative">
-                  <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Portrait of Chairman" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbfCJT5MxjEqTyXVk2CUZiPmsuZFgdHT5qS4h929UqxmoNmxKBepavgtOi1MwOaXuRvw7Y3lDKxoywF2rNQhpYx0s3WUNV5tUuEBj2tAMEIHmdVN2_5XJMZ6x_84yHpt03MOsGzSHSJiksdC0S1-al7jS-AwRosUIevjKKa_kAwtOWqWaS7_K6qMoL0fXm1sw-dfiiT9yM-zx0XmlxrUtlYQX4nNBPTwZ_MbAloPhRHQfmy0OGAKc_80fTY-zNrvz_f_n7qmp17BQ')" }}></div>
+            <h4 className="text-3xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">Yönetim Kurulu</h4>
+            <div className="flex flex-wrap justify-evenly items-start gap-6 gap-y-12">
+              {managementData.map((member) => (
+                <div key={member.id}>
+                  <TeamMemberCard
+                    name={member.name}
+                    position={member.position}
+                    image={member.image}
+                    social={member.social}
+                  />
                 </div>
-                <h5 className="text-lg font-bold text-navy-dark">Ahmet Yılmaz</h5>
-                <p className="text-primary font-medium text-sm mb-2">Başkan</p>
-                <div className="flex gap-2">
-                  <a className="text-gray-400 hover:text-[#0077b5]" href="#"><span className="material-symbols-outlined text-lg">work</span></a> {/* LinkedIn */}
-                  <a className="text-gray-400 hover:text-[#1DA1F2]" href="#"><span className="material-symbols-outlined text-lg">flutter_dash</span></a> {/* Twitter */}
-                </div>
-              </div>
-              {/* Member 2 */}
-              <div className="group">
-                <div className="aspect-square rounded-2xl overflow-hidden mb-4 bg-gray-100 relative">
-                  <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Portrait of Vice Chairman" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDl3LRWRm9a_bcidolzOtI717Dz_duNQlu6xY53UqqX9eRd20Tj1giQlKPT_zQM6TxKhm0hJrp2cZFH9AsPEVoOL8cyy_IkjXteA-6G4kGMVDRpg2PvXYH2PSgEgrCxHQeJUn5SWbzmwJPrvvlmCMkmM0s7cE1-D6eIUwLx5ayi2C_8qaulvA7JlF2fF098RBTm_GGP5DQ2GlVDCUF4hHidh1DI_R3IXap3pNcxYqnZm_KG557OgwQJM7LChNYHlzDHhXm4SCH0kLY')" }}></div>
-                </div>
-                <h5 className="text-lg font-bold text-navy-dark">Zeynep Kaya</h5>
-                <p className="text-primary font-medium text-sm mb-2">Başkan Yardımcısı</p>
-                <div className="flex gap-2">
-                  <a className="text-gray-400 hover:text-[#0077b5]" href="#"><span className="material-symbols-outlined text-lg">work</span></a>
-                  <a className="text-gray-400 hover:text-[#1DA1F2]" href="#"><span className="material-symbols-outlined text-lg">flutter_dash</span></a>
-                </div>
-              </div>
-              {/* Member 3 */}
-              <div className="group">
-                <div className="aspect-square rounded-2xl overflow-hidden mb-4 bg-gray-100 relative">
-                  <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Portrait of Dev Lead" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUvMVU6Sre4OsP6eTJfYXy4Jq3NWufFvZFGjab_0QXsHjb1cmL371df01-LH-Z-P3POCzg-mFMjYJjA2243redTwR7ecko5Q4l3twAEuWpM9eIb5K-ANbcaZrZJlz3IzJEkmcbBfWUWZ4aD51lww9uQjbqYXaM6xiKI1U5df94wwqLgUzEta9U8Bkaq8ZnGm7EmVZYLHr2GjLZ-p6-GQs1O-RExTMfZ7395N4UcZ09tTUBXWrRMxCBr95p2LvnEBlYAxIrHk4rAZU')" }}></div>
-                </div>
-                <h5 className="text-lg font-bold text-navy-dark">Mehmet Demir</h5>
-                <p className="text-primary font-medium text-sm mb-2">Teknik Lider</p>
-                <div className="flex gap-2">
-                  <a className="text-gray-400 hover:text-[#0077b5]" href="#"><span className="material-symbols-outlined text-lg">work</span></a>
-                  <a className="text-gray-400 hover:text-[#1DA1F2]" href="#"><span className="material-symbols-outlined text-lg">flutter_dash</span></a>
-                </div>
-              </div>
-              {/* Member 4 */}
-              <div className="group">
-                <div className="aspect-square rounded-2xl overflow-hidden mb-4 bg-gray-100 relative">
-                  <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" data-alt="Portrait of Community Manager" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuA57r4k2wlxy4o96r0lgeM8JzdAsvvWbdmq4ZQOKVa4Fr9DFQAdEvAxjT5L-OtlgdSxALQRJ17lfSUiom5fbDAbeD1-c0MCVYxupEOGuARRgO9s8R3S8MA1gXKUbftO66Ew_YEL3qYMHIfPUmpmrYI2qAreXeAqwxtCZDYSrs7qOBmaLaAtkfDgq664wD5K4I1ycj_XsKAKpokCDdmMi-xfnjTvCkTtF-DaizQWPDFcpBH2jGbF-vlgb2_5VZ-LHoQ5ZYL24i-cfp8')" }}></div>
-                </div>
-                <h5 className="text-lg font-bold text-navy-dark">Ayşe Çelik</h5>
-                <p className="text-primary font-medium text-sm mb-2">Topluluk Yöneticisi</p>
-                <div className="flex gap-2">
-                  <a className="text-gray-400 hover:text-[#0077b5]" href="#"><span className="material-symbols-outlined text-lg">work</span></a>
-                  <a className="text-gray-400 hover:text-[#1DA1F2]" href="#"><span className="material-symbols-outlined text-lg">flutter_dash</span></a>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
           {/* Committees Summary */}
           <div>
-            <h4 className="text-2xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">Çalışma Komiteleri</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-xl bg-gray-50 border border-gray-100">
-                <h5 className="text-lg font-bold text-navy-dark mb-2 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary">terminal</span>
-                  Yazılım &amp; Ar-Ge
-                </h5>
-                <p className="text-sm text-gray-600">Akıllı kontratlar, dApp geliştirme ve teknik eğitimlerin organizasyonu.</p>
-              </div>
-              <div className="p-6 rounded-xl bg-gray-50 border border-gray-100">
-                <h5 className="text-lg font-bold text-navy-dark mb-2 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary">campaign</span>
-                  Medya &amp; İletişim
-                </h5>
-                <p className="text-sm text-gray-600">Sosyal medya yönetimi, içerik üretimi ve PR çalışmaları.</p>
-              </div>
-              <div className="p-6 rounded-xl bg-gray-50 border border-gray-100">
-                <h5 className="text-lg font-bold text-navy-dark mb-2 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary">event</span>
-                  Etkinlik &amp; Organizasyon
-                </h5>
-                <p className="text-sm text-gray-600">Zirveler, hackathonlar ve tanışma toplantılarının planlanması.</p>
-              </div>
+            <h4 className="text-3xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">Çalışma Komiteleri</h4>
+            <div className="flex flex-col gap-4 h-auto lg:h-[750px] transition-all duration-500">
+              {committeesData.map((committee) => {
+                const isActive = activeCommittee === committee.id;
+
+                return (
+                  <div
+                    key={committee.id}
+                    onMouseEnter={() => setActiveCommittee(committee.id)}
+                    onClick={() => setActiveCommittee(committee.id)}
+                    className={`
+                      relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group
+                      ${isActive ? 'lg:flex-[3] bg-navy-dark shadow-2xl shadow-primary/20' : 'lg:flex-[1] bg-white border border-gray-200 hover:border-primary/50'}
+                    `}
+                  >
+                    {/* Background Gradient Effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-br from-navy-dark via-navy-medium to-primary opacity-0 transition-opacity duration-700 ${isActive ? 'opacity-100' : ''}`}></div>
+
+                    {/* Abstract Shapes */}
+                    <div className={`absolute -right-20 -bottom-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl transition-transform duration-700 ${isActive ? 'scale-100' : 'scale-50'}`}></div>
+
+                    {/* Content Container */}
+                    <div className="relative z-10 h-full p-8 flex flex-col justify-between">
+
+                      {/* Header Part */}
+                      <div className="flex items-start justify-between">
+                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${isActive ? 'bg-white/10 text-primary backdrop-blur-md' : 'bg-blue-50 text-navy-dark'}`}>
+                          <span className="material-symbols-outlined text-3xl">{committee.icon}</span>
+                        </div>
+
+                        {/* Arrow Icon showing expansion state */}
+                        <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 lg:hidden
+                          ${isActive ? 'border-white/20 text-white rotate-90' : 'border-gray-200 text-gray-400'}
+                        `}>
+                          <span className="material-symbols-outlined">arrow_forward_ios</span>
+                        </div>
+                      </div>
+
+                      {/* Title & Short Description */}
+                      <div className="mt-auto">
+                        <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isActive ? 'text-white' : 'text-navy-dark'}`}>
+                          {committee.name}
+                        </h3>
+
+                        {/* Expanded Content Wrapper */}
+                        <div className={`grid transition-all duration-700 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 lg:opacity-100 lg:h-auto lg:block'}`}>
+                          <div className="overflow-hidden">
+
+                            {/* Description */}
+                            <p className={`text-sm leading-relaxed mb-6 transition-colors duration-300 ${isActive ? 'text-gray-300' : 'text-gray-500 line-clamp-2 lg:line-clamp-none lg:hidden'}`}>
+                              {committee.description}
+                            </p>
+
+                            {/* Bullet Points */}
+                            <div className={`space-y-3 ${isActive ? 'block' : 'hidden'}`}>
+                              {committee.features && committee.features.map((feature, idx) => (
+                                <div key={idx} className="flex items-center gap-3 translate-x-0 transition-transform duration-500 delay-[100ms]" style={{ transitionDelay: `${idx * 100}ms` }}>
+                                  <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(29,151,170,0.8)]"></span>
+                                  <span className="text-sm font-medium text-gray-200">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -407,18 +431,21 @@ function App() {
                 Gebze Teknik Üniversitesi'nin blokzincir odaklı teknoloji ve inovasyon topluluğu.
               </p>
               <div className="flex gap-4">
-                <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" href="#">
-                  {/* Twitter Icon simulation */}
-                  <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                </a>
-                <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" href="#">
-                  {/* LinkedIn Icon simulation */}
-                  <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path clipRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fillRule="evenodd"></path></svg>
-                </a>
-                <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" href="#">
-                  {/* GitHub Icon simulation */}
-                  <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fillRule="evenodd"></path></svg>
-                </a>
+                {socialLinksData.map((link) => {
+                  const IconComponent = iconMap[link.platform];
+                  return (
+                    <a
+                      key={link.platform}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all"
+                      aria-label={link.platform}
+                    >
+                      {IconComponent && <IconComponent className="text-xl" />}
+                    </a>
+                  );
+                })}
               </div>
             </div>
             {/* Links */}
