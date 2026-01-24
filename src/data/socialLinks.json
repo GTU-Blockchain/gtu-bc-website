@@ -1,14 +1,22 @@
 [
     {
         "platform": "twitter",
-        "url": "#"
+        "url": "https://x.com/gtublockchain"
+    },
+    {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/gtublockchain/"
+    },
+    {
+        "platform": "tiktok",
+        "url": "https://www.tiktok.com/@gtublockchain"
     },
     {
         "platform": "linkedin",
-        "url": "#"
+        "url": "https://www.linkedin.com/company/gtublockchain/"
     },
     {
         "platform": "github",
-        "url": "#"
+        "url": "https://github.com/GTU-Blockchain"
     }
 ]

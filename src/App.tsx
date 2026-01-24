@@ -8,10 +8,13 @@ import TeamMemberCard from './components/TeamMemberCard';
 import CommitteeCard from './components/CommitteeCard';
 import { RiTwitterXFill } from "react-icons/ri";
 import { SiGithub } from "react-icons/si";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
 
 const iconMap: { [key: string]: React.ElementType } = {
   twitter: RiTwitterXFill,
+  instagram: FaInstagram,
+  tiktok: FaTiktok,
   linkedin: FaLinkedin,
   github: SiGithub
 };
@@ -319,7 +322,7 @@ function App() {
           <div className="text-center mb-16">
             <h2 className="text-primary font-bold text-2xl mb-2 uppercase tracking-wider">EKİBİMİZ</h2>
             <h3 className="text-5xl font-bold text-navy-dark">Yönetim ve Komiteler</h3>
-            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">Topluluğumuzu ileriye taşıyan tutkulu liderler ve çalışkan ekiplerimiz.</p>
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">Birlikte öğrenen, üreten ve gelişen ekibimiz.</p>
           </div>
           {/* Board */}
           <div className="mb-16">
@@ -368,8 +371,12 @@ function App() {
             {/* Brand */}
             <div className="col-span-1 lg:col-span-1">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
-                  <span className="material-symbols-outlined text-lg">deployed_code</span>
+                <div className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg backdrop-blur-sm border border-white/10">
+                  <img
+                    src="/images/gtub-symbol-white.png"
+                    alt="GTU Blockchain Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <span className="font-bold text-xl">GTU Blockchain</span>
               </div>
@@ -410,17 +417,24 @@ function App() {
               <div className="space-y-4 text-gray-400 text-sm">
                 <div className="flex items-start gap-3">
                   <span className="material-symbols-outlined text-primary mt-1">location_on</span>
-                  <p>Gebze Teknik Üniversitesi, <br />Bilgisayar Mühendisliği Binası, Zemin Kat<br />41400 Gebze/Kocaeli</p>
+                  <a
+                    href="https://maps.app.goo.gl/1hTXicTBq3NSdoJ78"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Gebze Teknik Üniversitesi, <br />Bilgisayar Mühendisliği Binası, Zemin Kat<br />41400 Gebze/Kocaeli
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-primary">mail</span>
-                  <a className="hover:text-white transition-colors" href="mailto:info@gtublockchain.com">info@gtublockchain.com</a>
+                  <a className="hover:text-white transition-colors" href="mailto:blockchain@gtu.edu.tr">blockchain@gtu.edu.tr</a>
                 </div>
               </div>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-            <p>© 2024 GTU Blockchain Topluluğu. Tüm hakları saklıdır.</p>
+            <p>© 2026 GTU Blockchain Topluluğu. Tüm hakları saklıdır.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
               <a className="hover:text-gray-300" href="#">Gizlilik Politikası</a>
               <a className="hover:text-gray-300" href="#">Kullanım Koşulları</a>

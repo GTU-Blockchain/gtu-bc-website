@@ -16,12 +16,14 @@ const TeamMemberCard = ({ name, position, image, social }: TeamMemberCardProps) 
         <div className="group relative w-72">
             <div className="relative bg-white rounded-2xl p-4 border border-gray-100 transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 overflow-hidden h-full">
 
-                {/* Block Icon Animation */}
-                <div className="absolute top-4 right-4 z-20 overflow-visible pointer-events-none">
-                    <div className="opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out origin-center">
-                        <span className="material-symbols-outlined text-3xl text-primary drop-shadow-sm">
-                            deployed_code
-                        </span>
+                {/* Custom Icon Animation - Fade In Only */}
+                <div className="absolute top-1 right-1 z-20 overflow-visible pointer-events-none">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out">
+                        <img
+                            src="/images/gtub-symbol-white.png"
+                            alt="GTU Icon"
+                            className="w-24 h-24 object-contain drop-shadow-sm opacity-90"
+                        />
                     </div>
                 </div>
 
