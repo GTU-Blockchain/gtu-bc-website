@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import JoinSection from './components/JoinSection'
 import AboutSection from './components/AboutSection'
 import VisionSection from './components/VisionSection'
+import AchievementsSection from './components/AchievementsSection'
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
