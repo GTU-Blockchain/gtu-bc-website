@@ -8,6 +8,10 @@ interface CommitteeCardProps {
     onToggle: (id: string) => void;
 }
 
+/**
+ * Committee Card Component
+ * - Added Animated Effects
+ */
 const CommitteeCard = ({ id, name, icon, description, features, isActive, onToggle }: CommitteeCardProps) => {
     return (
         <div
