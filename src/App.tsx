@@ -19,6 +19,7 @@ const iconMap: { [key: string]: React.ElementType } = {
   github: SiGithub
 };
 
+import AchievementsSection from './components/AchievementsSection'
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeCommittee, setActiveCommittee] = useState<string | null>("software");
@@ -225,96 +226,8 @@ function App() {
         </div>
       </section>
 
-      {/* Achievements & Map Section */}
-      <section className="py-24 bg-background-light" id="achievements">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div className="max-w-2xl">
-              <h2 className="text-primary font-bold text-lg mb-2 uppercase tracking-wider">Başarılarımız</h2>
-              <h3 className="text-4xl font-bold text-navy-dark leading-tight">Sınırları Aşan Projeler</h3>
-              <p className="mt-4 text-gray-600 text-lg">
-                Hackathon zaferlerimiz, uluslararası konferans katılımlarımız ve global iş birliklerimizle iz bırakıyoruz.
-              </p>
-            </div>
-            <div className="mt-4 md:mt-0">
-              <div className="flex items-center gap-2 text-navy-dark font-bold">
-                <span className="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
-                Canlı Etki Haritası
-              </div>
-            </div>
-          </div>
-          {/* Map Visualization */}
-          <div className="relative w-full h-[500px] bg-[#e1eef4] rounded-2xl border border-[#d1e3e5] overflow-hidden mb-12 shadow-inner group">
-            {/* Background Map Image */}
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-60"
-              data-alt="Stylized world map showing continents in light blue tones"
-              style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhGXWZT0_dkgfHm9Q9I2bZEjf2cjORU-KJRQpcwtbwihcODYVblO47CahAExmaPDZmVOQR1ykoXzgKyh3VkWAwxhNHsDM8EaGj2SL8k51B9HgOtPyUbdsLEgO2hQlxBwXKI1UpU8WKfXq70eEE9nvu6UJMyN_s5-63YfvjGy_jv0IHVIRk4jGI7HOZIDi6GMnjy2QFZHTHFbVbXNsbwbxKMEv0jETbN12hMD3sf__ra0gLz80U33srhkECEzanjuyZeBpuZRPQR6U')", backgroundSize: "cover", filter: "hue-rotate(190deg) saturate(0.5)" }}
-            ></div>
-            {/* Markers (Simulated) */}
-            {/* Turkey */}
-            <div className="absolute top-[38%] left-[54%] group/marker cursor-pointer">
-              <div className="w-4 h-4 bg-primary rounded-full relative z-10 border-2 border-white shadow-lg"></div>
-              <div className="w-4 h-4 bg-primary rounded-full absolute top-0 left-0 animate-ping opacity-75"></div>
-              {/* Tooltip */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white p-3 rounded-lg shadow-xl w-48 hidden group-hover/marker:block z-20 transition-all">
-                <h5 className="font-bold text-navy-dark text-sm border-b pb-1 mb-1">İstanbul, TR</h5>
-                <p className="text-xs text-gray-600">ETHGünü &amp; Blockchain Economy Summit Partnerliği</p>
-              </div>
-            </div>
-            {/* France */}
-            <div className="absolute top-[32%] left-[49%] group/marker cursor-pointer">
-              <div className="w-3 h-3 bg-navy-dark rounded-full relative z-10 border border-white"></div>
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-lg shadow-xl w-40 hidden group-hover/marker:block z-20">
-                <h5 className="font-bold text-navy-dark text-xs">Paris, FR</h5>
-                <p className="text-[10px] text-gray-600">EthCC Katılımı</p>
-              </div>
-            </div>
-            {/* USA */}
-            <div className="absolute top-[35%] left-[25%] group/marker cursor-pointer">
-              <div className="w-3 h-3 bg-navy-dark rounded-full relative z-10 border border-white"></div>
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-lg shadow-xl w-40 hidden group-hover/marker:block z-20">
-                <h5 className="font-bold text-navy-dark text-xs">Denver, USA</h5>
-                <p className="text-[10px] text-gray-600">ETHDenver Hackathon Finalisti</p>
-              </div>
-            </div>
-            {/* Singapore */}
-            <div className="absolute top-[55%] left-[78%] group/marker cursor-pointer">
-              <div className="w-3 h-3 bg-navy-dark rounded-full relative z-10 border border-white"></div>
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white p-2 rounded-lg shadow-xl w-40 hidden group-hover/marker:block z-20">
-                <h5 className="font-bold text-navy-dark text-xs">Singapur</h5>
-                <p className="text-[10px] text-gray-600">Token2049 Bursu</p>
-              </div>
-            </div>
-            {/* Map Overlay Stats */}
-            <div className="absolute bottom-6 left-6 flex gap-4">
-              <div className="bg-white/90 backdrop-blur px-4 py-2 rounded-lg shadow-sm">
-                <div className="text-xs text-gray-500 uppercase font-semibold">Ziyaret Edilen</div>
-                <div className="text-xl font-bold text-navy-dark">8+ Ülke</div>
-              </div>
-              <div className="bg-white/90 backdrop-blur px-4 py-2 rounded-lg shadow-sm">
-                <div className="text-xs text-gray-500 uppercase font-semibold">Kazanılan</div>
-                <div className="text-xl font-bold text-navy-dark">15+ Ödül</div>
-              </div>
-            </div>
-          </div>
-          {/* Awards List */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="border-l-4 border-primary pl-4 py-1">
-              <h4 className="font-bold text-lg text-navy-dark">ETHGlobal İstanbul '23</h4>
-              <p className="text-gray-600 text-sm mt-1">"En İyi DeFi Projesi" Finalisti</p>
-            </div>
-            <div className="border-l-4 border-navy-light pl-4 py-1">
-              <h4 className="font-bold text-lg text-navy-dark">Avalanche Hacks</h4>
-              <p className="text-gray-600 text-sm mt-1">1.lik Ödülü - Gaming Kategorisi</p>
-            </div>
-            <div className="border-l-4 border-navy-medium pl-4 py-1">
-              <h4 className="font-bold text-lg text-navy-dark">Akbank Web3 Hackathon</h4>
-              <p className="text-gray-600 text-sm mt-1">Jüri Özel Ödülü</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Achievements Section */}
+      <AchievementsSection />
 
       {/* Team Section */}
       <section className="py-24 bg-white" id="team">
