@@ -11,6 +11,7 @@ export default {
         "primary": "#1d97aa",
         "primary-dark": "#167a8a",
         "accent-light": "#B7FFFF",
+        "accent-purple": "#5835AB",
         "navy-dark": "#012A4D",
         "navy-medium": "#002F5D",
         "navy-light": "#1A3576",
@@ -20,7 +21,7 @@ export default {
       fontFamily: {
         "display": ["Lexend", "sans-serif"]
       },
-      borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
     },
   },
   plugins: [],

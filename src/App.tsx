@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import JoinSection from './components/JoinSection'
+import AboutSection from './components/AboutSection'
+import VisionSection from './components/VisionSection'
 import committeesData from './data/committees.json';
 import managementData from './data/management.json';
 import socialLinksData from './data/socialLinks.json';
@@ -136,95 +138,10 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-white relative" id="about">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-primary font-bold text-lg mb-2 uppercase tracking-wider">Hakkımızda</h2>
-              <h3 className="text-4xl font-bold text-navy-dark mb-6 leading-tight">Teknolojiyi Sadece Tüketen Değil, Üreten Bir Nesil</h3>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                2018 yılında kurulan GTU Blockchain, Gebze Teknik Üniversitesi bünyesinde blokzincir teknolojisine ilgi duyan öğrencileri bir araya getiren, Türkiye'nin en aktif öğrenci topluluklarından biridir.
-              </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Misyonumuz, üyelerimize teknik ve teorik yetkinlik kazandırarak onları sektöre hazırlamak ve küresel ölçekte rekabet edebilir projeler geliştirmektir.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <span className="text-4xl font-extrabold text-primary">500+</span>
-                  <span className="text-sm font-medium text-gray-500 uppercase">Aktif Üye</span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <span className="text-4xl font-extrabold text-primary">50+</span>
-                  <span className="text-sm font-medium text-gray-500 uppercase">Etkinlik &amp; Workshop</span>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 hover:border-primary/30 transition-colors group">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-symbols-outlined">school</span>
-                </div>
-                <h4 className="text-xl font-bold text-navy-dark mb-2">Eğitim</h4>
-                <p className="text-sm text-gray-600">Solidity, Rust ve Web3 temelleri üzerine kapsamlı bootcamp programları.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 hover:border-primary/30 transition-colors group mt-0 sm:mt-8">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-symbols-outlined">code_blocks</span>
-                </div>
-                <h4 className="text-xl font-bold text-navy-dark mb-2">Geliştirme</h4>
-                <p className="text-sm text-gray-600">Gerçek dünya problemlerine çözüm üreten dApp ve protokol geliştirme.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 hover:border-primary/30 transition-colors group">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-symbols-outlined">hub</span>
-                </div>
-                <h4 className="text-xl font-bold text-navy-dark mb-2">Networking</h4>
-                <p className="text-sm text-gray-600">Sektör liderleri ve global topluluklarla güçlü bağlantılar.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 hover:border-primary/30 transition-colors group mt-0 sm:mt-8">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-symbols-outlined">rocket_launch</span>
-                </div>
-                <h4 className="text-xl font-bold text-navy-dark mb-2">Kuluçka</h4>
-                <p className="text-sm text-gray-600">Üyelerimizin start-up fikirlerini hayata geçirmeleri için mentorluk desteği.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* Vision Section */}
-      <section className="py-24 bg-navy-dark text-white relative overflow-hidden" id="vision">
-        {/* Abstract background shapes */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-navy-medium skew-x-12 opacity-50 translate-x-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-[100px] opacity-20"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-primary font-bold text-lg mb-2 uppercase tracking-wider">Vizyonumuz</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Blokzincir Ekosisteminde <br />Küresel Bir Oyuncu Olmak</h3>
-            <p className="text-gray-300 text-lg">
-              GTU Blockchain olarak vizyonumuz, Türkiye'deki blokzincir farkındalığını artırmak ve geliştirdiğimiz projelerle uluslararası arenada ülkemizi temsil eden lider bir inovasyon merkezi haline gelmektir.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-xl hover:bg-white/10 transition-colors">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">public</span>
-              <h4 className="text-xl font-bold mb-3">Global Entegrasyon</h4>
-              <p className="text-gray-400">Dünyanın önde gelen blokzincir vakıfları ve DAO'ları ile partnerlikler kurarak öğrencilerimize global fırsatlar sunmak.</p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-xl hover:bg-white/10 transition-colors">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">lightbulb</span>
-              <h4 className="text-xl font-bold mb-3">Sürdürülebilir İnovasyon</h4>
-              <p className="text-gray-400">Sadece trendleri takip eden değil, trendleri belirleyen Ar-Ge projeleri üretmek.</p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-xl hover:bg-white/10 transition-colors">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">diversity_3</span>
-              <h4 className="text-xl font-bold mb-3">Kapsayıcı Topluluk</h4>
-              <p className="text-gray-400">Teknik olmayan disiplinlerden öğrencileri de ekosisteme dahil ederek multidisipliner çalışma kültürü oluşturmak.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <VisionSection />
 
       {/* Achievements Section */}
       <AchievementsSection />
