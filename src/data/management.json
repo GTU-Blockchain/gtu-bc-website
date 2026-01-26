@@ -1,0 +1,52 @@
+[
+    {
+        "id": "yonetim-kurulu-baskani",
+        "name": "Eren YILMAZ",
+        "position": "Yönetim Kurulu Başkanı",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBbfCJT5MxjEqTyXVk2CUZiPmsuZFgdHT5qS4h929UqxmoNmxKBepavgtOi1MwOaXuRvw7Y3lDKxoywF2rNQhpYx0s3WUNV5tUuEBj2tAMEIHmdVN2_5XJMZ6x_84yHpt03MOsGzSHSJiksdC0S1-al7jS-AwRosUIevjKKa_kAwtOWqWaS7_K6qMoL0fXm1sw-dfiiT9yM-zx0XmlxrUtlYQX4nNBPTwZ_MbAloPhRHQfmy0OGAKc_80fTY-zNrvz_f_n7qmp17BQ",
+        "social": {
+            "linkedin": "https://linkedin.com.tr",
+            "email": "https://google.com"
+        }
+    },
+    {
+        "id": "yonetim-kurulu-baskan-yardimcisi",
+        "name": "Yusuf Alperen ÇELİK",
+        "position": "Yönetim Kurulu Başkan Yardımcısı",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDl3LRWRm9a_bcidolzOtI717Dz_duNQlu6xY53UqqX9eRd20Tj1giQlKPT_zQM6TxKhm0hJrp2cZFH9AsPEVoOL8cyy_IkjXteA-6G4kGMVDRpg2PvXYH2PSgEgrCxHQeJUn5SWbzmwJPrvvlmCMkmM0s7cE1-D6eIUwLx5ayi2C_8qaulvA7JlF2fF098RBTm_GGP5DQ2GlVDCUF4hHidh1DI_R3IXap3pNcxYqnZm_KG557OgwQJM7LChNYHlzDHhXm4SCH0kLY",
+        "social": {
+            "linkedin": "https://linkedin.com.tr",
+            "email": "https://google.com"
+        }
+    },
+    {
+        "id": "sosyal-medya-ekibi-baskani",
+        "name": "Yağmur MERAL",
+        "position": "Sosyal Medya Ekibi Başkanı",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuA57r4k2wlxy4o96r0lgeM8JzdAsvvWbdmq4ZQOKVa4Fr9DFQAdEvAxjT5L-OtlgdSxALQRJ17lfSUiom5fbDAbeD1-c0MCVYxupEOGuARRgO9s8R3S8MA1gXKUbftO66Ew_YEL3qYMHIfPUmpmrYI2qAreXeAqwxtCZDYSrs7qOBmaLaAtkfDgq664wD5K4I1ycj_XsKAKpokCDdmMi-xfnjTvCkTtF-DaizQWPDFcpBH2jGbF-vlgb2_5VZ-LHoQ5ZYL24i-cfp8",
+        "social": {
+            "linkedin": "https://linkedin.com.tr",
+            "email": "https://google.com"
+        }
+    },
+    {
+        "id": "yazilim-ekibi-baskani",
+        "name": "Umut SATIR",
+        "position": "Yazılım Ekibi Başkanı",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDUvMVU6Sre4OsP6eTJfYXy4Jq3NWufFvZFGjab_0QXsHjb1cmL371df01-LH-Z-P3POCzg-mFMjYJjA2243redTwR7ecko5Q4l3twAEuWpM9eIb5K-ANbcaZrZJlz3IzJEkmcbBfWUWZ4aD51lww9uQjbqYXaM6xiKI1U5df94wwqLgUzEta9U8Bkaq8ZnGm7EmVZYLHr2GjLZ-p6-GQs1O-RExTMfZ7395N4UcZ09tTUBXWrRMxCBr95p2LvnEBlYAxIrHk4rAZU",
+        "social": {
+            "linkedin": "https://linkedin.com.tr",
+            "email": "https://google.com"
+        }
+    },
+    {
+        "id": "finans-koordinatoru",
+        "name": "Salih CENGİZ",
+        "position": "Finans Koordinatörü",
+        "image": "https://ui-avatars.com/api/?name=Salih+Cengiz&background=random",
+        "social": {
+            "linkedin": "https://linkedin.com.tr",
+            "email": "https://google.com"
+        }
+    }
+]
