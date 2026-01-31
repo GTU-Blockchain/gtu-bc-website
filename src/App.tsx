@@ -28,6 +28,7 @@ import MapSection from './components/MapSection'
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeCommittee, setActiveCommittee] = useState<string | null>("software");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
@@ -48,6 +49,12 @@ function App() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
 
   // Get committee translations
@@ -79,9 +86,9 @@ function App() {
   };
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-navy-dark font-display antialiased overflow-x-hidden">
+    <div className="bg-background-light dark:bg-background-dark text-navy-dark font-display antialiased overflow-x-clip">
       {/* Navigation */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-gray-100">
+      <header className="sticky top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
@@ -93,12 +100,12 @@ function App() {
             </div>
             {/* Desktop Menu */}
             <nav className="hidden md:flex space-x-8 items-center">
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#about">{t('nav.about')}</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#vision">{t('nav.vision')}</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#achievements">{t('nav.achievements')}</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#map">{t('nav.map')}</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#team">{t('nav.team')}</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#contact">{t('nav.contact')}</a>
+              <button type="button" onClick={() => scrollToSection('about')} className="text-navy-medium hover:text-primary font-medium transition-colors bg-transparent border-none cursor-pointer">{t('nav.about')}</button>
+              <button type="button" onClick={() => scrollToSection('vision')} className="text-navy-medium hover:text-primary font-medium transition-colors bg-transparent border-none cursor-pointer">{t('nav.vision')}</button>
+              <button type="button" onClick={() => scrollToSection('achievements')} className="text-navy-medium hover:text-primary font-medium transition-colors bg-transparent border-none cursor-pointer">{t('nav.achievements')}</button>
+              <button type="button" onClick={() => scrollToSection('map')} className="text-navy-medium hover:text-primary font-medium transition-colors bg-transparent border-none cursor-pointer">{t('nav.map')}</button>
+              <button type="button" onClick={() => scrollToSection('team')} className="text-navy-medium hover:text-primary font-medium transition-colors bg-transparent border-none cursor-pointer">{t('nav.team')}</button>
+              <button type="button" onClick={() => scrollToSection('contact')} className="text-navy-medium hover:text-primary font-medium transition-colors bg-transparent border-none cursor-pointer">{t('nav.contact')}</button>
             </nav>
             {/* Actions */}
             <div className="hidden md:flex items-center space-x-4">
@@ -124,17 +131,35 @@ function App() {
                   ENG
                 </button>
               </div>
-              <a className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-dark transition-all shadow-md hover:shadow-lg" href="#join">
+              <button type="button" onClick={() => scrollToSection('join')} className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-dark transition-all shadow-md hover:shadow-lg">
                 {t('nav.join')}
-              </a>
+              </button>
             </div>
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
-              <button className="text-gray-500 hover:text-gray-900 focus:outline-none" type="button">
-                <span className="material-symbols-outlined text-3xl">menu</span>
+            <div className="md:hidden flex items-center gap-3">
+              <div className="flex items-center bg-gray-100 rounded-full p-1">
+                <button onClick={() => setLanguage('tr')} className={`px-2 py-1 rounded-full text-xs font-bold ${language === 'tr' ? 'bg-white shadow-sm text-navy-dark' : 'text-gray-500'}`}>TR</button>
+                <button onClick={() => setLanguage('en')} className={`px-2 py-1 rounded-full text-xs font-bold ${language === 'en' ? 'bg-white shadow-sm text-navy-dark' : 'text-gray-500'}`}>ENG</button>
+              </div>
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-500 hover:text-gray-900 focus:outline-none p-2" type="button" aria-label="Menü">
+                <span className="material-symbols-outlined text-3xl">{mobileMenuOpen ? 'close' : 'menu'}</span>
               </button>
             </div>
           </div>
+          {/* Mobile menu dropdown */}
+          {mobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-100 bg-white">
+              <nav className="py-4 space-y-1">
+                <button type="button" onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-navy-medium hover:bg-gray-50 hover:text-primary font-medium bg-transparent border-none cursor-pointer">{t('nav.about')}</button>
+                <button type="button" onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-3 text-navy-medium hover:bg-gray-50 hover:text-primary font-medium bg-transparent border-none cursor-pointer">{t('nav.vision')}</button>
+                <button type="button" onClick={() => scrollToSection('achievements')} className="block w-full text-left px-4 py-3 text-navy-medium hover:bg-gray-50 hover:text-primary font-medium bg-transparent border-none cursor-pointer">{t('nav.achievements')}</button>
+                <button type="button" onClick={() => scrollToSection('map')} className="block w-full text-left px-4 py-3 text-navy-medium hover:bg-gray-50 hover:text-primary font-medium bg-transparent border-none cursor-pointer">{t('nav.map')}</button>
+                <button type="button" onClick={() => scrollToSection('team')} className="block w-full text-left px-4 py-3 text-navy-medium hover:bg-gray-50 hover:text-primary font-medium bg-transparent border-none cursor-pointer">{t('nav.team')}</button>
+                <button type="button" onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-3 text-navy-medium hover:bg-gray-50 hover:text-primary font-medium bg-transparent border-none cursor-pointer">{t('nav.contact')}</button>
+                <button type="button" onClick={() => scrollToSection('join')} className="mx-4 mt-4 flex justify-center items-center w-[calc(100%-2rem)] py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-dark cursor-pointer">{t('nav.join')}</button>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
@@ -166,13 +191,13 @@ function App() {
             {t('hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-xl text-white bg-navy-dark hover:bg-navy-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="#join">
+            <button type="button" onClick={() => scrollToSection('join')} className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-xl text-white bg-navy-dark hover:bg-navy-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               {t('hero.joinButton')}
               <span className="material-symbols-outlined ml-2">arrow_forward</span>
-            </a>
-            <a className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-base font-bold rounded-xl text-navy-dark bg-white hover:bg-gray-50 transition-all shadow-sm hover:shadow-md" href="#achievements">
+            </button>
+            <button type="button" onClick={() => scrollToSection('achievements')} className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-base font-bold rounded-xl text-navy-dark bg-white hover:bg-gray-50 transition-all shadow-sm hover:shadow-md">
               {t('hero.projectsButton')}
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -278,10 +303,10 @@ function App() {
             <div className="col-span-1">
               <h4 className="text-lg font-bold mb-4">{t('footer.quickLinks')}</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.home')}</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.about')}</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.eventCalendar')}</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.blog')}</a></li>
+                <li><button type="button" onClick={() => { scrollToTop(); }} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.home')}</button></li>
+                <li><button type="button" onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.about')}</button></li>
+                <li><button type="button" onClick={() => scrollToTop()} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.eventCalendar')}</button></li>
+                <li><button type="button" onClick={() => scrollToTop()} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.blog')}</button></li>
               </ul>
             </div>
             {/* Contact Info */}
@@ -309,8 +334,8 @@ function App() {
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
             <p>{t('footer.copyright')}</p>
             <div className="flex gap-4 mt-4 md:mt-0">
-              <a className="hover:text-gray-300" href="#">{t('footer.privacyPolicy')}</a>
-              <a className="hover:text-gray-300" href="#">{t('footer.termsOfUse')}</a>
+              <button type="button" onClick={() => scrollToTop()} className="hover:text-gray-300 bg-transparent border-none cursor-pointer text-inherit font-inherit p-0">{t('footer.privacyPolicy')}</button>
+              <button type="button" onClick={() => scrollToTop()} className="hover:text-gray-300 bg-transparent border-none cursor-pointer text-inherit font-inherit p-0">{t('footer.termsOfUse')}</button>
             </div>
           </div>
         </div>
