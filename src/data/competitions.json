@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "countryCode": "IT",
+    "country": { "tr": "İtalya", "en": "Italy" },
+    "competitionName": { "tr": "ETHRome 2025", "en": "ETHRome 2025" },
+    "projectName": "BitBrawlers",
+    "award": { "tr": "ENS Ödül Havuzu Kazananı", "en": "ENS Prize Pool Winner" },
+    "date": "2025"
+  },
+  {
+    "id": 2,
+    "countryCode": "TR",
+    "country": { "tr": "Türkiye", "en": "Turkey" },
+    "competitionName": { "tr": "ETHİstanbul", "en": "ETHIstanbul" },
+    "projectName": "Cryptle",
+    "award": { "tr": "RISE Track Birincisi 🥇", "en": "RISE Track Winner 🥇" },
+    "date": "2025"
+  },
+  {
+    "id": 3,
+    "countryCode": "CZ",
+    "country": { "tr": "Çekya", "en": "Czech Republic" },
+    "competitionName": { "tr": "ETHPrague", "en": "ETHPrague" },
+    "projectName": "Vaultify",
+    "award": { "tr": "Blockscout Ödül Havuzu 🏆", "en": "Blockscout Prize Pool 🏆" },
+    "date": "2024"
+  },
+  {
+    "id": 4,
+    "countryCode": "CZ",
+    "country": { "tr": "Çekya", "en": "Czech Republic" },
+    "competitionName": { "tr": "ETHPrague", "en": "ETHPrague" },
+    "projectName": "ChronoTrade",
+    "award": { "tr": "Blockscout Ödül Havuzu 🏆", "en": "Blockscout Prize Pool 🏆" },
+    "date": "2024"
+  }
+]

@@ -1,6 +1,9 @@
 import Counter from './Counter';
+import { useLanguage } from '../context/LanguageContext';
 
 function AboutSection() {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 bg-gradient-to-br from-[#0f1c3f] via-[#0b1221] to-[#020617] relative overflow-hidden" id="about">
       {/* Decorative elements */}
@@ -12,17 +15,17 @@ function AboutSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block">
             <span className="text-blue-300 font-semibold text-xs mb-3 uppercase tracking-wider inline-block px-3 py-1.5 bg-blue-500/10 rounded-full">
-              Hakkımızda
+              {t('about.badge')}
             </span>
           </div>
           <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Akademi ile <span className="bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent">Web3 Dünyası</span> Arasındaki Köprü
+            {t('about.title1')} <span className="bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent">{t('about.title2')}</span> {t('about.title3')}
           </h3>
           <p className="text-lg text-gray-300 leading-relaxed mb-4">
-            GTU Blockchain, Gebze Teknik Üniversitesi'nde öğrenci liderliğinde kurulan bir blockchain topluluğu. 2023'den beri blockchain teknolojisinde inovasyon ve teknik uzmanlık geliştirmeyi hedefliyoruz.
+            {t('about.description1')}
           </p>
           <p className="text-base text-gray-400 leading-relaxed">
-            Üyelerimize uygulamalı geliştirme fırsatları, sektör lideri eğitimler ve konferanslar sunuyoruz. Akademi ile gerçek dünya blockchain uygulamaları arasındaki boşluğu kapatarak, öğrencileri Web3'ün gelecek liderleri olacak şekilde yetiştiriyoruz.
+            {t('about.description2')}
           </p>
         </div>
 
@@ -35,7 +38,7 @@ function AboutSection() {
               suffix="+"
               className="text-4xl font-extrabold bg-gradient-to-br from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-1"
             />
-            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Aktif Üye</div>
+            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{t('about.activeMembers')}</div>
           </div>
 
           {/* Card 2 - Geliştirme */}
@@ -44,9 +47,9 @@ function AboutSection() {
               <div className="w-11 h-11 bg-gradient-to-br from-indigo-500/20 to-indigo-500/10 rounded-lg flex items-center justify-center text-indigo-300 flex-shrink-0">
                 <span className="material-symbols-outlined text-2xl">code_blocks</span>
               </div>
-              <h4 className="text-lg font-bold text-white">Geliştirme</h4>
+              <h4 className="text-lg font-bold text-white">{t('about.development')}</h4>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed">Gerçek dünya problemlerine çözüm üreten dApp'ler.</p>
+            <p className="text-sm text-gray-400 leading-relaxed">{t('about.developmentDesc')}</p>
           </div>
 
           {/* Card 3 - Eğitim & Bootcamp */}
@@ -55,9 +58,9 @@ function AboutSection() {
               <div className="w-11 h-11 bg-gradient-to-br from-blue-500/20 to-blue-500/10 rounded-lg flex items-center justify-center text-blue-300 flex-shrink-0">
                 <span className="material-symbols-outlined text-2xl">school</span>
               </div>
-              <h4 className="text-lg font-bold text-white">Eğitim & Bootcamp</h4>
+              <h4 className="text-lg font-bold text-white">{t('about.education')}</h4>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed">Solidity, Rust ve Web3 üzerine sektör lideri eğitimler.</p>
+            <p className="text-sm text-gray-400 leading-relaxed">{t('about.educationDesc')}</p>
           </div>
 
           {/* Card 4 - Etkinlik Stat */}
@@ -67,7 +70,7 @@ function AboutSection() {
               suffix="+"
               className="text-4xl font-extrabold bg-gradient-to-br from-indigo-400 to-blue-400 bg-clip-text text-transparent mb-1"
             />
-            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Etkinlik</div>
+            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{t('about.events')}</div>
           </div>
 
           {/* Card 5 - Global Network */}
@@ -76,9 +79,9 @@ function AboutSection() {
               <div className="w-11 h-11 bg-gradient-to-br from-blue-500/20 to-blue-500/10 rounded-lg flex items-center justify-center text-blue-300 flex-shrink-0">
                 <span className="material-symbols-outlined text-2xl">hub</span>
               </div>
-              <h4 className="text-lg font-bold text-white">Global Network</h4>
+              <h4 className="text-lg font-bold text-white">{t('about.globalNetwork')}</h4>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed">Sektör liderleri ve global Web3 toplulukları ile güçlü bağlar.</p>
+            <p className="text-sm text-gray-400 leading-relaxed">{t('about.globalNetworkDesc')}</p>
           </div>
 
           {/* Card 6 - İnovasyon */}
@@ -87,9 +90,9 @@ function AboutSection() {
               <div className="w-11 h-11 bg-gradient-to-br from-indigo-500/20 to-indigo-500/10 rounded-lg flex items-center justify-center text-indigo-300 flex-shrink-0">
                 <span className="material-symbols-outlined text-2xl">rocket_launch</span>
               </div>
-              <h4 className="text-lg font-bold text-white">İnovasyon</h4>
+              <h4 className="text-lg font-bold text-white">{t('about.innovation')}</h4>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed">Start-up fikirlerini hayata geçirmek için mentorluk.</p>
+            <p className="text-sm text-gray-400 leading-relaxed">{t('about.innovationDesc')}</p>
           </div>
         </div>
       </div>
