@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TeamMember {
   name: string;
@@ -8,12 +9,12 @@ interface TeamMember {
 
 interface Achievement {
   id: number;
-  title: string;
-  location: string;
+  titleKey: string;
+  locationKey: string;
   date: string;
   project: string;
-  award: string;
-  description: string;
+  awardKey: string;
+  descriptionKey: string;
   image?: string;
   flag: string;
   gallery?: string[];
@@ -30,12 +31,12 @@ interface Achievement {
 const achievements: Achievement[] = [
   {
     id: 1,
-    title: "ETHRome 2025",
-    location: "Roma, İtalya",
+    titleKey: "achievement.ethrome.title",
+    locationKey: "achievement.ethrome.location",
     date: "2025",
     project: "BitBrawlers",
-    award: "ENS Ödül Havuzu Kazananı",
-    description: "ENS altyapısını oyunlaştırılmış kimlik sistemiyle birleştiren BitBrawlers projesiyle, zincir üstü rekabet ve ödül deneyimi sunan yenilikçi bir Web3 uygulaması geliştirdik. Polkadot ekosisteminde Moonbase Alpha testnet üzerinde deploy edildi.",
+    awardKey: "achievement.ethrome.award",
+    descriptionKey: "achievement.ethrome.description",
     image: "/achievements/roma.jpeg",
     flag: "🇮🇹",
     gallery: [
@@ -57,12 +58,12 @@ const achievements: Achievement[] = [
   },
   {
     id: 2,
-    title: "ETHİstanbul",
-    location: "İstanbul, Türkiye",
+    titleKey: "achievement.ethistanbul.title",
+    locationKey: "achievement.ethistanbul.location",
     date: "2025",
     project: "Cryptle",
-    award: "RISE Track Birincisi 🥇",
-    description: "Cryptle, Wordle'dan ilham alan, skill-first bir onchain kelime oyunudur. Yüksek performanslı RISE EVM üzerine inşa edilmiştir. Oyuncular ETH stake ederek bir raundu girerler ve dinamik zamanlayıcıyla yarışarak bulmacayı çözmeye çalışırlar.",
+    awardKey: "achievement.ethistanbul.award",
+    descriptionKey: "achievement.ethistanbul.description",
     image: "/achievements/istanbul.jpeg",
     flag: "🇹🇷",
     gallery: [
@@ -86,12 +87,12 @@ const achievements: Achievement[] = [
   },
   {
     id: 3,
-    title: "ETHPrague",
-    location: "Prag, Çekya",
+    titleKey: "achievement.ethprague1.title",
+    locationKey: "achievement.ethprague1.location",
     date: "2024",
     project: "Vaultify",
-    award: "Blockscout Ödül Havuzu 🏆",
-    description: "Vaultify, kullanıcıların herhangi bir cüzdan adresine zaman kilitli veya anlık dijital mesajlar, medya içerikleri ve token göndermelerine olanak tanıyan merkeziyetsiz bir Web3 mobil uygulamasıdır.",
+    awardKey: "achievement.ethprague1.award",
+    descriptionKey: "achievement.ethprague1.description",
     image: "/achievements/prag.jpeg",
     flag: "🇨🇿",
     gallery: [
@@ -111,12 +112,12 @@ const achievements: Achievement[] = [
   },
   {
     id: 4,
-    title: "ETHPrague",
-    location: "Prag, Çekya",
+    titleKey: "achievement.ethprague2.title",
+    locationKey: "achievement.ethprague2.location",
     date: "2024",
     project: "ChronoTrade",
-    award: "Blockscout Ödül Havuzu 🏆",
-    description: "ChronoTrade, bireylerin TIME token'ları kullanarak beceri ve hizmet ticareti yapmasını sağlayan merkeziyetsiz bir zaman tabanlı hizmet alışverişi platformudur. 1 TIME = 1 saat.",
+    awardKey: "achievement.ethprague2.award",
+    descriptionKey: "achievement.ethprague2.description",
     image: "/achievements/prag.jpeg",
     flag: "🇨🇿",
     gallery: [
@@ -161,6 +162,7 @@ const techColors: Record<string, string> = {
 const AchievementsSection = () => {
   const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const { t } = useLanguage();
 
   const nextImage = () => {
     if (selectedAchievement?.gallery) {
@@ -188,10 +190,10 @@ const AchievementsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-primary font-bold text-lg mb-2 uppercase tracking-wider">Başarılarımız</h2>
-          <h3 className="text-4xl font-bold text-navy-dark leading-tight">Global Hackathon Zaferleri</h3>
+          <h2 className="text-primary font-bold text-lg mb-2 uppercase tracking-wider">{t('achievements.badge')}</h2>
+          <h3 className="text-4xl font-bold text-navy-dark leading-tight">{t('achievements.title')}</h3>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
-            Dünya çapındaki hackathonlarda geliştirdiğimiz projeler ve kazandığımız ödüllerle Web3 ekosisteminde iz bırakıyoruz.
+            {t('achievements.description')}
           </p>
         </div>
 
@@ -208,7 +210,7 @@ const AchievementsSection = () => {
                 {achievement.image ? (
                   <img
                     src={achievement.image}
-                    alt={achievement.title}
+                    alt={t(achievement.titleKey)}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 ) : (
@@ -221,7 +223,7 @@ const AchievementsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent" />
                 
                 {/* Award Badge */}
-                {achievement.award && (
+                {achievement.awardKey && (
                   <div className="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-lg">
                     🏆
                   </div>
@@ -231,9 +233,9 @@ const AchievementsSection = () => {
                 <div className="absolute bottom-3 left-3 right-3">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xl">{achievement.flag}</span>
-                    <h4 className="text-lg font-bold text-white">{achievement.title}</h4>
+                    <h4 className="text-lg font-bold text-white">{t(achievement.titleKey)}</h4>
                   </div>
-                  <p className="text-white/80 text-xs">{achievement.location} • {achievement.date}</p>
+                  <p className="text-white/80 text-xs">{t(achievement.locationKey)} • {achievement.date}</p>
                 </div>
               </div>
 
@@ -244,7 +246,7 @@ const AchievementsSection = () => {
                   <span className="font-bold text-navy-dark text-sm">{achievement.project}</span>
                 </div>
                 <p className="text-gray-600 text-xs line-clamp-2">
-                  {achievement.description}
+                  {t(achievement.descriptionKey)}
                 </p>
                 
                 {/* Technologies Preview */}
@@ -265,7 +267,7 @@ const AchievementsSection = () => {
                 
                 {/* Read More */}
                 <div className="mt-3 flex items-center text-primary font-medium text-xs group-hover:gap-1 transition-all">
-                  <span>Detayları Gör</span>
+                  <span>{t('achievements.seeDetails')}</span>
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </div>
               </div>
@@ -277,19 +279,19 @@ const AchievementsSection = () => {
         <div className="bg-navy-dark rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
             <div className="text-4xl font-extrabold text-primary mb-1">3+</div>
-            <div className="text-white/70 text-sm uppercase tracking-wider">Ülke Ziyareti</div>
+            <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.countriesVisited')}</div>
           </div>
           <div>
             <div className="text-4xl font-extrabold text-primary mb-1">5+</div>
-            <div className="text-white/70 text-sm uppercase tracking-wider">Hackathon Katılımı</div>
+            <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.hackathonParticipation')}</div>
           </div>
           <div>
             <div className="text-4xl font-extrabold text-primary mb-1">4+</div>
-            <div className="text-white/70 text-sm uppercase tracking-wider">Ödül Kazanımı</div>
+            <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.awardsWon')}</div>
           </div>
           <div>
             <div className="text-4xl font-extrabold text-primary mb-1">7+</div>
-            <div className="text-white/70 text-sm uppercase tracking-wider">Proje Geliştirme</div>
+            <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.projectsDeveloped')}</div>
           </div>
         </div>
 
@@ -308,7 +310,7 @@ const AchievementsSection = () => {
                 {selectedAchievement.image ? (
                   <img
                     src={selectedAchievement.image}
-                    alt={selectedAchievement.title}
+                    alt={t(selectedAchievement.titleKey)}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -331,8 +333,8 @@ const AchievementsSection = () => {
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-4xl">{selectedAchievement.flag}</span>
                     <div>
-                      <h3 className="text-3xl font-bold text-white">{selectedAchievement.title}</h3>
-                      <p className="text-white/80">{selectedAchievement.location} • {selectedAchievement.date}</p>
+                      <h3 className="text-3xl font-bold text-white">{t(selectedAchievement.titleKey)}</h3>
+                      <p className="text-white/80">{t(selectedAchievement.locationKey)} • {selectedAchievement.date}</p>
                     </div>
                   </div>
                 </div>
@@ -341,10 +343,10 @@ const AchievementsSection = () => {
               {/* Modal Content */}
               <div className="p-6 md:p-8">
                 {/* Award Badge */}
-                {selectedAchievement.award && (
+                {selectedAchievement.awardKey && (
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold px-4 py-2 rounded-full mb-6 shadow-lg">
                     <span className="material-symbols-outlined">emoji_events</span>
-                    {selectedAchievement.award}
+                    {t(selectedAchievement.awardKey)}
                   </div>
                 )}
 
@@ -354,22 +356,22 @@ const AchievementsSection = () => {
                   <div>
                     {/* Project Name */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Proje</h4>
+                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">{t('achievements.project')}</h4>
                       <p className="text-2xl font-bold text-navy-dark">{selectedAchievement.project}</p>
                     </div>
 
                     {/* Description */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Hakkında</h4>
+                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">{t('achievements.about')}</h4>
                       <p className="text-gray-600 leading-relaxed">
-                        {selectedAchievement.description}
+                        {t(selectedAchievement.descriptionKey)}
                       </p>
                     </div>
 
                     {/* Technologies */}
                     {selectedAchievement.technologies && (
                       <div className="mb-6">
-                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Teknolojiler</h4>
+                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">{t('achievements.technologies')}</h4>
                         <div className="flex flex-wrap gap-2">
                           {selectedAchievement.technologies.map((tech, idx) => (
                             <span
@@ -386,7 +388,7 @@ const AchievementsSection = () => {
                     {/* Contract Info */}
                     {selectedAchievement.contractAddress && (
                       <div className="mb-6 p-4 bg-gray-50 rounded-xl">
-                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Akıllı Kontrat</h4>
+                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">{t('achievements.smartContract')}</h4>
                         <p className="text-xs text-gray-500 mb-1">{selectedAchievement.chain}</p>
                         <code className="text-xs bg-gray-200 px-2 py-1 rounded text-navy-dark break-all">
                           {selectedAchievement.contractAddress}
@@ -400,7 +402,7 @@ const AchievementsSection = () => {
                     {/* Project Gallery */}
                     {selectedAchievement.gallery && selectedAchievement.gallery.length > 0 && (
                       <div className="mb-6">
-                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Proje Görselleri</h4>
+                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">{t('achievements.projectImages')}</h4>
                         <div className="relative rounded-xl overflow-hidden bg-gray-100">
                           <img
                             src={selectedAchievement.gallery[activeGalleryIndex]}
@@ -446,7 +448,7 @@ const AchievementsSection = () => {
                     {/* Team Members - Proje Ekibi */}
                     {selectedAchievement.team && (
                       <div className="mb-6">
-                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Proje Ekibi</h4>
+                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">{t('achievements.projectTeam')}</h4>
                         <div className="grid grid-cols-2 gap-3">
                           {selectedAchievement.team.map((member, idx) => (
                             <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
@@ -466,7 +468,7 @@ const AchievementsSection = () => {
                     {/* Non-Technical Team */}
                     {selectedAchievement.nonTechnicalTeam && (
                       <div className="mb-6">
-                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Operasyon Ekibi</h4>
+                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">{t('achievements.operationsTeam')}</h4>
                         <div className="grid grid-cols-2 gap-3">
                           {selectedAchievement.nonTechnicalTeam.map((member, idx) => (
                             <div key={idx} className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
@@ -508,14 +510,14 @@ const AchievementsSection = () => {
                       className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium rounded-xl transition-colors"
                     >
                       <span className="material-symbols-outlined">rocket_launch</span>
-                      Detaylar
+                      {t('achievements.details')}
                     </a>
                   )}
                   <button
                     onClick={() => setSelectedAchievement(null)}
                     className="flex-1 sm:flex-none px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-colors"
                   >
-                    Kapat
+                    {t('achievements.close')}
                   </button>
                 </div>
               </div>

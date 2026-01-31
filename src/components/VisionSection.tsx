@@ -1,6 +1,9 @@
 import Spline from '@splinetool/react-spline';
+import { useLanguage } from '../context/LanguageContext';
 
 function VisionSection() {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative overflow-hidden bg-black" id="vision" style={{ minHeight: '100vh', width: '100%' }}>
       {/* Spline 3D Background - Full Screen */}
@@ -17,20 +20,20 @@ function VisionSection() {
         <div className="flex flex-col items-center text-center w-full">
           <div className="mb-6">
             <span className="text-[#C8D8E8] font-semibold text-xs uppercase tracking-wider px-4 py-2 rounded-full border border-[#C8D8E8]/30" style={{ pointerEvents: 'none' }}>
-              Vizyonumuz
+              {t('vision.badge')}
             </span>
           </div>
           <div className="relative inline-block max-w-4xl mx-auto px-4">
             <div className="absolute inset-0 bg-black/40 blur-xl rounded-full -z-10 transform scale-150"></div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight relative z-10">
               <span className="bg-gradient-to-r from-[#A8B8C8] via-[#E8ECF0] to-[#A8B8C8] bg-clip-text text-transparent">
-                Blokzincir Ekosisteminde
+                {t('vision.title1')}
               </span>
               <br />
-              <span className="text-white drop-shadow-lg">Küresel Bir Oyuncu Olmak</span>
+              <span className="text-white drop-shadow-lg">{t('vision.title2')}</span>
             </h2>
             <p className="text-base text-gray-300 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-medium relative z-10">
-              GTU Blockchain olarak vizyonumuz, Türkiye'deki blokzincir farkındalığını artırmak ve geliştirdiğimiz projelerle uluslararası arenada ülkemizi temsil eden lider bir inovasyon merkezi haline gelmektir.
+              {t('vision.description')}
             </p>
           </div>
         </div>
@@ -42,9 +45,9 @@ function VisionSection() {
             <div className="w-14 h-14 bg-gradient-to-br from-[#8BA7C0]/20 to-[#8BA7C0]/10 rounded-xl flex items-center justify-center mb-5 mx-auto">
               <span className="material-symbols-outlined text-3xl text-[#C8D8E8]">public</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Global Entegrasyon</h3>
+            <h3 className="text-xl font-bold text-white mb-3">{t('vision.globalIntegration')}</h3>
             <p className="text-gray-300 leading-relaxed text-sm">
-              Dünyanın önde gelen blokzincir vakıfları ve DAO'lar ile partnerlikler kurarak öğrencilerimize global fırsatlar sunmak.
+              {t('vision.globalIntegrationDesc')}
             </p>
           </div>
 
@@ -53,9 +56,9 @@ function VisionSection() {
             <div className="w-14 h-14 bg-gradient-to-br from-[#8BA7C0]/20 to-[#8BA7C0]/10 rounded-xl flex items-center justify-center mb-5 mx-auto">
               <span className="material-symbols-outlined text-3xl text-[#C8D8E8]">lightbulb</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Sürdürülebilir İnovasyon</h3>
+            <h3 className="text-xl font-bold text-white mb-3">{t('vision.sustainableInnovation')}</h3>
             <p className="text-gray-300 leading-relaxed text-sm">
-              Sadece trendleri takip eden değil, trendleri belirleyen Ar-Ge projeleri üretmek ve teknolojiye yön vermek.
+              {t('vision.sustainableInnovationDesc')}
             </p>
           </div>
 
@@ -64,9 +67,9 @@ function VisionSection() {
             <div className="w-14 h-14 bg-gradient-to-br from-[#8BA7C0]/20 to-[#C8D8E8]/10 rounded-xl flex items-center justify-center mb-5 mx-auto">
               <span className="material-symbols-outlined text-3xl text-[#C8D8E8]">diversity_3</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Kapsayıcı Topluluk</h3>
+            <h3 className="text-xl font-bold text-white mb-3">{t('vision.inclusiveCommunity')}</h3>
             <p className="text-gray-300 leading-relaxed text-sm">
-              Teknik olmayan disiplinlerden öğrencileri de ekosisteme dahil ederek multidisipliner çalışma kültürü oluşturmak.
+              {t('vision.inclusiveCommunityDesc')}
             </p>
           </div>
         </div>

@@ -5,6 +5,7 @@ import VisionSection from './components/VisionSection'
 import committeesData from './data/committees.json';
 import managementData from './data/management.json';
 import socialLinksData from './data/socialLinks.json';
+import { useLanguage } from './context/LanguageContext';
 
 import TeamMemberCard from './components/TeamMemberCard';
 import CommitteeCard from './components/CommitteeCard';
@@ -22,9 +23,12 @@ const iconMap: { [key: string]: React.ElementType } = {
 };
 
 import AchievementsSection from './components/AchievementsSection'
+import MapSection from './components/MapSection'
+
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeCommittee, setActiveCommittee] = useState<string | null>("software");
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +50,34 @@ function App() {
     });
   };
 
+  // Get committee translations
+  const getCommitteeData = () => {
+    return committeesData.map(committee => ({
+      ...committee,
+      name: t(`committee.${committee.id}.name`),
+      description: t(`committee.${committee.id}.description`),
+      features: [
+        t(`committee.${committee.id}.feature1`),
+        t(`committee.${committee.id}.feature2`),
+        t(`committee.${committee.id}.feature3`),
+        t(`committee.${committee.id}.feature4`),
+        t(`committee.${committee.id}.feature5`),
+      ]
+    }));
+  };
+
+  // Get management position translations
+  const getPositionTranslation = (positionId: string): string => {
+    const positionMap: { [key: string]: string } = {
+      'yonetim-kurulu-baskani': 'position.boardChairman',
+      'yonetim-kurulu-baskan-yardimcisi': 'position.boardViceChairman',
+      'sosyal-medya-ekibi-baskani': 'position.socialMediaHead',
+      'yazilim-ekibi-baskani': 'position.softwareHead',
+      'finans-koordinatoru': 'position.financeCoordinator',
+    };
+    return t(positionMap[positionId] || positionId);
+  };
+
   return (
     <div className="bg-background-light dark:bg-background-dark text-navy-dark font-display antialiased overflow-x-hidden">
       {/* Navigation */}
@@ -61,20 +93,39 @@ function App() {
             </div>
             {/* Desktop Menu */}
             <nav className="hidden md:flex space-x-8 items-center">
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#about">Hakkımızda</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#vision">Vizyon</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#achievements">Başarılar</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#team">Ekip</a>
-              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#contact">İletişim</a>
+              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#about">{t('nav.about')}</a>
+              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#vision">{t('nav.vision')}</a>
+              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#achievements">{t('nav.achievements')}</a>
+              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#map">{t('nav.map')}</a>
+              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#team">{t('nav.team')}</a>
+              <a className="text-navy-medium hover:text-primary font-medium transition-colors" href="#contact">{t('nav.contact')}</a>
             </nav>
             {/* Actions */}
             <div className="hidden md:flex items-center space-x-4">
               <div className="flex items-center bg-gray-100 rounded-full p-1">
-                <button className="px-3 py-1 rounded-full bg-white shadow-sm text-xs font-bold text-navy-dark">TR</button>
-                <button className="px-3 py-1 rounded-full text-xs font-medium text-gray-500 hover:text-navy-dark">ENG</button>
+                <button 
+                  onClick={() => setLanguage('tr')}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    language === 'tr' 
+                      ? 'bg-white shadow-sm text-navy-dark' 
+                      : 'text-gray-500 hover:text-navy-dark'
+                  }`}
+                >
+                  TR
+                </button>
+                <button 
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    language === 'en' 
+                      ? 'bg-white shadow-sm text-navy-dark' 
+                      : 'text-gray-500 hover:text-navy-dark'
+                  }`}
+                >
+                  ENG
+                </button>
               </div>
               <a className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-dark transition-all shadow-md hover:shadow-lg" href="#join">
-                Katıl
+                {t('nav.join')}
               </a>
             </div>
             {/* Mobile menu button */}
@@ -98,41 +149,30 @@ function App() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Gebze Teknik Üniversitesi'nin Teknoloji Üssü
+            {t('hero.badge')}
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-navy-dark mb-6 leading-tight">
-            Geleceği <span className="gradient-text">Blokzincir</span> ile <br /> İnşa Ediyoruz
+            {language === 'tr' ? (
+              <>
+                {t('hero.title1')} <span className="gradient-text">{t('hero.title2')}</span> {t('hero.title3')} <br /> {t('hero.title4')}
+              </>
+            ) : (
+              <>
+                {t('hero.title1')} <span className="gradient-text">{t('hero.title2')}</span> <br /> {t('hero.title3')} <span className="gradient-text">{t('hero.title4')}</span>
+              </>
+            )}
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-10 leading-relaxed">
-            GTU Blockchain Topluluğu olarak, merkeziyetsiz teknolojilerin kalbinde yenilikçi çözümler üretiyor, global projeler geliştiriyor ve öğrenci odaklı bir ekosistem inşa ediyoruz.
+            {t('hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-xl text-white bg-navy-dark hover:bg-navy-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="#join">
-              Topluluğa Katıl
+              {t('hero.joinButton')}
               <span className="material-symbols-outlined ml-2">arrow_forward</span>
             </a>
             <a className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-base font-bold rounded-xl text-navy-dark bg-white hover:bg-gray-50 transition-all shadow-sm hover:shadow-md" href="#achievements">
-              Projelerimizi İncele
+              {t('hero.projectsButton')}
             </a>
-          </div>
-          {/* Hero Image / Visual representation */}
-          <div className="mt-16 relative mx-auto max-w-5xl">
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-              <div className="absolute top-0 w-full h-8 bg-gray-100 border-b border-gray-200 flex items-center px-4 gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-              </div>
-              <div className="bg-navy-dark/5 p-1 pt-9">
-                <div
-                  className="w-full h-[400px] bg-cover bg-center"
-                  data-alt="Abstract network connections visualization with nodes and glowing lines in teal and dark blue"
-                  style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBSgocFvzSshy_00ewjgwRwXiJhEEii71i96k9eYM9bSYtc-GrFMNxVCzKNJudnnhHm0BDcBioz9jolrZGAB_yLwE1jmDJH_dB_aiB-E9Zv_5een0c-iDWCKKs4f5IEPZ4otA4PIvoAUGrQhufQwXWtxKRhvs9Ti9J_zsQf6rP57uVtsJhhk-7YpsM7YSKGUFx8zW2CLSRk0pQwyfsKPT9twfounWsUcflitWWLkZOFL1WKfsTWQS6yocny-WBRkKwZArRELAlRW4')" }}
-                >
-                  <div className="w-full h-full bg-gradient-to-t from-white via-transparent to-transparent opacity-20"></div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -146,23 +186,26 @@ function App() {
       {/* Achievements Section */}
       <AchievementsSection />
 
+      {/* Map Section */}
+      <MapSection />
+
       {/* Team Section */}
       <section className="py-24 bg-white" id="team">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-primary font-bold text-2xl mb-2 uppercase tracking-wider">EKİBİMİZ</h2>
-            <h3 className="text-5xl font-bold text-navy-dark">Yönetim ve Komiteler</h3>
-            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">Birlikte öğrenen, üreten ve gelişen ekibimiz.</p>
+            <h2 className="text-primary font-bold text-2xl mb-2 uppercase tracking-wider">{t('team.badge')}</h2>
+            <h3 className="text-5xl font-bold text-navy-dark">{t('team.title')}</h3>
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">{t('team.description')}</p>
           </div>
           {/* Board */}
           <div className="mb-16">
-            <h4 className="text-3xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">Yönetim Kurulu</h4>
+            <h4 className="text-3xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">{t('team.board')}</h4>
             <div className="flex flex-wrap justify-evenly items-start gap-6 gap-y-12">
               {managementData.map((member) => (
                 <div key={member.id}>
                   <TeamMemberCard
                     name={member.name}
-                    position={member.position}
+                    position={getPositionTranslation(member.id)}
                     image={member.image}
                     social={member.social}
                   />
@@ -172,9 +215,9 @@ function App() {
           </div>
           {/* Committees Summary */}
           <div>
-            <h4 className="text-3xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">Çalışma Komiteleri</h4>
+            <h4 className="text-3xl font-bold text-navy-dark mb-8 border-b border-gray-100 pb-2">{t('team.committees')}</h4>
             <div className="flex flex-col gap-4 h-auto lg:h-[750px] transition-all duration-500">
-              {committeesData.map((committee) => (
+              {getCommitteeData().map((committee) => (
                 <CommitteeCard
                   key={committee.id}
                   id={committee.id}
@@ -211,7 +254,7 @@ function App() {
                 <span className="font-bold text-xl">GTU Blockchain</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Gebze Teknik Üniversitesi'nin blokzincir odaklı teknoloji ve inovasyon topluluğu.
+                {t('footer.description')}
               </p>
               <div className="flex gap-4">
                 {socialLinksData.map((link) => {
@@ -233,17 +276,17 @@ function App() {
             </div>
             {/* Links */}
             <div className="col-span-1">
-              <h4 className="text-lg font-bold mb-4">Hızlı Bağlantılar</h4>
+              <h4 className="text-lg font-bold mb-4">{t('footer.quickLinks')}</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a className="hover:text-primary transition-colors" href="#">Ana Sayfa</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">Hakkımızda</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">Etkinlik Takvimi</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">Blog (Medium)</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.home')}</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.about')}</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.eventCalendar')}</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">{t('footer.blog')}</a></li>
               </ul>
             </div>
             {/* Contact Info */}
             <div className="col-span-1 lg:col-span-2">
-              <h4 className="text-lg font-bold mb-4">İletişim</h4>
+              <h4 className="text-lg font-bold mb-4">{t('footer.contact')}</h4>
               <div className="space-y-4 text-gray-400 text-sm">
                 <div className="flex items-start gap-3">
                   <span className="material-symbols-outlined text-primary mt-1">location_on</span>
@@ -264,10 +307,10 @@ function App() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-            <p>© 2026 GTU Blockchain Topluluğu. Tüm hakları saklıdır.</p>
+            <p>{t('footer.copyright')}</p>
             <div className="flex gap-4 mt-4 md:mt-0">
-              <a className="hover:text-gray-300" href="#">Gizlilik Politikası</a>
-              <a className="hover:text-gray-300" href="#">Kullanım Koşulları</a>
+              <a className="hover:text-gray-300" href="#">{t('footer.privacyPolicy')}</a>
+              <a className="hover:text-gray-300" href="#">{t('footer.termsOfUse')}</a>
             </div>
           </div>
         </div>
@@ -278,7 +321,7 @@ function App() {
         <button
           onClick={scrollToTop}
           className="fixed bottom-8 right-8 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg transition-all duration-300 z-50 animate-bounce"
-          aria-label="Yukarı Çık"
+          aria-label={t('footer.scrollTop')}
         >
           <span className="material-symbols-outlined text-xl">arrow_upward</span>
         </button>
