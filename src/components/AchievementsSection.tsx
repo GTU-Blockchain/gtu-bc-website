@@ -39,11 +39,7 @@ const achievements: Achievement[] = [
     descriptionKey: "achievement.ethrome.description",
     image: "/achievements/roma.jpeg",
     flag: "🇮🇹",
-    gallery: [
-      "/achievements/bitbrawlers/ss1.png",
-      "/achievements/bitbrawlers/ss2.png",
-      "/achievements/bitbrawlers/ss3.png"
-    ],
+    gallery: ["/achievements/roma.jpeg"],
     github: "https://github.com/GTU-Blockchain/bitbrawlers-ethrome-2025",
     taikai: "https://taikai.network/ethrome/hackathons/2025/projects/cmgx8dls101x68697ibhzz9g7/idea",
     team: [
@@ -95,10 +91,7 @@ const achievements: Achievement[] = [
     descriptionKey: "achievement.ethprague1.description",
     image: "/achievements/prag.jpeg",
     flag: "🇨🇿",
-    gallery: [
-      "/achievements/vaultify/ss1.png",
-      "/achievements/vaultify/ss2.png"
-    ],
+    gallery: ["/achievements/prag.jpeg"],
     github: "https://ethglobal.com/showcase/vaultify-cw3ow",
     taikai: "https://drive.google.com/file/d/1RP0pTwoLdm5YjLSB2nLALqWEJtSFB3e3/view?usp=sharing",
     team: [
@@ -120,10 +113,7 @@ const achievements: Achievement[] = [
     descriptionKey: "achievement.ethprague2.description",
     image: "/achievements/prag.jpeg",
     flag: "🇨🇿",
-    gallery: [
-      "/achievements/chronotrade/ss1.png",
-      "/achievements/chronotrade/ss2.png"
-    ],
+    gallery: ["/achievements/prag.jpeg"],
     github: "https://ethglobal.com/showcase/chronotrade-yoxnf",
     team: [
       { name: "Yusuf Alperen Çelik", role: "Developer", telegram: "@AlteasV" },
@@ -452,7 +442,7 @@ const AchievementsSection = () => {
                         <div className="grid grid-cols-2 gap-3">
                           {selectedAchievement.team.map((member, idx) => (
                             <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                              <div className="w-10 h-10 bg-gradient-to-br from-primary to-navy-dark rounded-full flex items-center justify-center text-white font-bold">
+                              <div className="w-10 h-10 min-w-10 min-h-10 flex-shrink-0 bg-gradient-to-br from-primary to-navy-dark rounded-full flex items-center justify-center text-white font-bold">
                                 {member.name.charAt(0)}
                               </div>
                               <div>
@@ -472,7 +462,7 @@ const AchievementsSection = () => {
                         <div className="grid grid-cols-2 gap-3">
                           {selectedAchievement.nonTechnicalTeam.map((member, idx) => (
                             <div key={idx} className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
-                              <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold">
+                              <div className="w-10 h-10 min-w-10 min-h-10 flex-shrink-0 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold">
                                 {member.name.charAt(0)}
                               </div>
                               <div>
