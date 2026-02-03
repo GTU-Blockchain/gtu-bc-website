@@ -93,8 +93,12 @@ function App() {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-navy-dark to-primary rounded-lg flex items-center justify-center text-white">
-                <span className="material-symbols-outlined text-2xl">deployed_code</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-navy-dark to-primary rounded-lg flex items-center justify-center">
+                <img
+                  src="/images/gtub-symbol-white.png"
+                  alt="GTU Blockchain Logo"
+                  className="w-13 h-13 object-contain"
+                />
               </div>
               <span className="font-bold text-xl tracking-tight text-navy-dark">GTU Blockchain</span>
             </div>
