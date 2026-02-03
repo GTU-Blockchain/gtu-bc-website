@@ -12,6 +12,7 @@ interface Competition {
   competitionName: { tr: string; en: string };
   projectName: string;
   award: { tr: string; en: string };
+  awardType: 'first' | 'second' | 'third' | 'pool';
   date: string;
 }
 
@@ -36,6 +37,21 @@ const MapSection = () => {
     [competitionsByCountry]
   );
 
+  const getAwardEmoji = (awardType: 'first' | 'second' | 'third' | 'pool'): string => {
+    switch (awardType) {
+      case 'first':
+        return '🥇';
+      case 'second':
+        return '🥈';
+      case 'third':
+        return '🥉';
+      case 'pool':
+        return '🏅';
+      default:
+        return '';
+    }
+  };
+
   const handleMouseEnter = (
     geo: { properties?: { ISO_A2?: string } },
     evt: React.MouseEvent
@@ -45,11 +61,29 @@ const MapSection = () => {
 
     const countryCompetitions = competitionsByCountry[countryCode];
     const lang = language as 'tr' | 'en';
-    const lines = countryCompetitions.map(
-      (c) =>
-        `📍 ${c.country[lang]} | ${c.competitionName[lang]} | ${c.projectName} | ${c.award[lang]} | ${c.date}`
-    );
-    setTooltipContent(lines.join('\n\n'));
+    
+    // Group competitions by competition name
+    const competitionsByEvent: Record<string, Competition[]> = {};
+    countryCompetitions.forEach((c) => {
+      const key = c.competitionName[lang];
+      if (!competitionsByEvent[key]) competitionsByEvent[key] = [];
+      competitionsByEvent[key].push(c);
+    });
+
+    // Build tooltip content
+    const lines: string[] = [];
+    const firstComp = countryCompetitions[0];
+    lines.push(firstComp.country[lang]); // Ülke
+    
+    Object.entries(competitionsByEvent).forEach(([eventName, comps]) => {
+      lines.push(eventName); // Yarışma adı
+      comps.forEach((c) => {
+        const emoji = getAwardEmoji(c.awardType);
+        lines.push(`${c.projectName} ${emoji}`); // Proje adı + emoji
+      });
+    });
+
+    setTooltipContent(lines.join('\n'));
     setTooltipPosition({ x: evt.clientX, y: evt.clientY });
   };
 
@@ -82,8 +116,10 @@ const MapSection = () => {
           <ComposableMap
             projection="geoMercator"
             projectionConfig={{
-              center: [20, 30],
-              scale: 140,
+              // Avrupa odaklı merkez (yaklaşık olarak Orta Avrupa)
+              center: [30, 50],
+              // Biraz daha zoom
+              scale: 250,
             }}
             width={900}
             height={500}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import statsData from '../data/stats.json';
 
 interface TeamMember {
   name: string;
@@ -27,6 +28,15 @@ interface Achievement {
   contractAddress?: string;
   chain?: string;
 }
+
+interface Stats {
+  countriesVisited: number;
+  hackathonParticipation: number;
+  awardsWon: number;
+  projectsDeveloped: number;
+}
+
+const stats = statsData as Stats;
 
 const achievements: Achievement[] = [
   {
@@ -268,19 +278,19 @@ const AchievementsSection = () => {
         {/* Stats Bar */}
         <div className="bg-navy-dark rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
-            <div className="text-4xl font-extrabold text-primary mb-1">3+</div>
+            <div className="text-4xl font-extrabold text-primary mb-1">{stats.countriesVisited}+</div>
             <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.countriesVisited')}</div>
           </div>
           <div>
-            <div className="text-4xl font-extrabold text-primary mb-1">5+</div>
+            <div className="text-4xl font-extrabold text-primary mb-1">{stats.hackathonParticipation}+</div>
             <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.hackathonParticipation')}</div>
           </div>
           <div>
-            <div className="text-4xl font-extrabold text-primary mb-1">4+</div>
+            <div className="text-4xl font-extrabold text-primary mb-1">{stats.awardsWon}+</div>
             <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.awardsWon')}</div>
           </div>
           <div>
-            <div className="text-4xl font-extrabold text-primary mb-1">7+</div>
+            <div className="text-4xl font-extrabold text-primary mb-1">{stats.projectsDeveloped}+</div>
             <div className="text-white/70 text-sm uppercase tracking-wider">{t('achievements.projectsDeveloped')}</div>
           </div>
         </div>
