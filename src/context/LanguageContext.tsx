@@ -109,6 +109,7 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.about': 'Hakkımızda',
     'footer.eventCalendar': 'Etkinlik Takvimi',
     'footer.blog': 'Blog (Medium)',
+    'footer.notionRoadmap': 'Notion Yazılım Eğitimi Yol Haritası',
     'footer.contact': 'İletişim',
     'footer.copyright': '© 2026 GTU Blockchain Topluluğu. Tüm hakları saklıdır.',
     'footer.privacyPolicy': 'Gizlilik Politikası',
@@ -155,17 +156,17 @@ const translations: Record<Language, Record<string, string>> = {
     
     'achievement.ethistanbul.title': 'ETHİstanbul',
     'achievement.ethistanbul.location': 'İstanbul, Türkiye',
-    'achievement.ethistanbul.award': 'RISE Track Birincisi 🥇',
+    'achievement.ethistanbul.award': 'RISE Track Birincisi',
     'achievement.ethistanbul.description': "Cryptle, Wordle'dan ilham alan, skill-first bir onchain kelime oyunudur. Yüksek performanslı RISE EVM üzerine inşa edilmiştir. Oyuncular ETH stake ederek bir raundu girerler ve dinamik zamanlayıcıyla yarışarak bulmacayı çözmeye çalışırlar.",
     
     'achievement.ethprague1.title': 'ETHPrague',
     'achievement.ethprague1.location': 'Prag, Çekya',
-    'achievement.ethprague1.award': 'Blockscout Ödül Havuzu 🏆',
+    'achievement.ethprague1.award': 'Blockscout Ödül Havuzu',
     'achievement.ethprague1.description': 'Vaultify, kullanıcıların herhangi bir cüzdan adresine zaman kilitli veya anlık dijital mesajlar, medya içerikleri ve token göndermelerine olanak tanıyan merkeziyetsiz bir Web3 mobil uygulamasıdır.',
     
     'achievement.ethprague2.title': 'ETHPrague',
     'achievement.ethprague2.location': 'Prag, Çekya',
-    'achievement.ethprague2.award': 'Blockscout Ödül Havuzu 🏆',
+    'achievement.ethprague2.award': 'Blockscout Ödül Havuzu',
     'achievement.ethprague2.description': 'ChronoTrade, bireylerin TIME token\'ları kullanarak beceri ve hizmet ticareti yapmasını sağlayan merkeziyetsiz bir zaman tabanlı hizmet alışverişi platformudur. 1 TIME = 1 saat.',
   },
   en: {
@@ -264,6 +265,7 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.about': 'About Us',
     'footer.eventCalendar': 'Event Calendar',
     'footer.blog': 'Blog (Medium)',
+    'footer.notionRoadmap': 'Notion Software Education Roadmap',
     'footer.contact': 'Contact',
     'footer.copyright': '© 2026 GTU Blockchain Community. All rights reserved.',
     'footer.privacyPolicy': 'Privacy Policy',
@@ -310,17 +312,17 @@ const translations: Record<Language, Record<string, string>> = {
     
     'achievement.ethistanbul.title': 'ETHIstanbul',
     'achievement.ethistanbul.location': 'Istanbul, Turkey',
-    'achievement.ethistanbul.award': 'RISE Track Winner 🥇',
+    'achievement.ethistanbul.award': 'RISE Track Winner',
     'achievement.ethistanbul.description': 'Cryptle is a skill-first onchain word game inspired by Wordle. Built on high-performance RISE EVM. Players enter a round by staking ETH and compete with a dynamic timer to solve the puzzle.',
     
     'achievement.ethprague1.title': 'ETHPrague',
     'achievement.ethprague1.location': 'Prague, Czech Republic',
-    'achievement.ethprague1.award': 'Blockscout Prize Pool 🏆',
+    'achievement.ethprague1.award': 'Blockscout Prize Pool',
     'achievement.ethprague1.description': 'Vaultify is a decentralized Web3 mobile application that allows users to send time-locked or instant digital messages, media content, and tokens to any wallet address.',
     
     'achievement.ethprague2.title': 'ETHPrague',
     'achievement.ethprague2.location': 'Prague, Czech Republic',
-    'achievement.ethprague2.award': 'Blockscout Prize Pool 🏆',
+    'achievement.ethprague2.award': 'Blockscout Prize Pool',
     'achievement.ethprague2.description': 'ChronoTrade is a decentralized time-based service exchange platform that enables individuals to trade skills and services using TIME tokens. 1 TIME = 1 hour.',
   }
 };

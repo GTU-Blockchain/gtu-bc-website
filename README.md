@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# GTU Blockchain – Resmi Web Sitesi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Gebze Teknik Üniversitesi](https://www.gtu.edu.tr/) blokzincir odaklı teknoloji ve inovasyon topluluğu **GTU Blockchain**'in resmi web sitesidir.
 
-Currently, two official plugins are available:
+![GTU Blockchain](public/images/gtub-symbol-white.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Hakkımızda
 
-## React Compiler
+GTU Blockchain, blokzincir teknolojileri, Web3 ve merkeziyetsiz uygulamalar alanında çalışan öğrencilerin bir araya geldiği bir topluluktur. Hackathon katılımları, projeler ve teknik etkinliklerle sektöre katkı sağlamayı hedefler.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Özellikler
 
-## Expanding the ESLint configuration
+- 🌐 **Çoklu dil desteği** – Türkçe ve İngilizce
+- 📍 **Dünya haritası** – Katıldığımız hackathon ve yarışmaların ülkelere göre görselleştirilmesi
+- 🏆 **Hackathon zaferleri** – ETHRome, ETHIstanbul, ETHGlobal Prague vb. başarılarımız
+- 👥 **Yönetim ve ekipler** – Topluluk yapımız ve komiteler
+- 🔘 **CTA butonları** – Katıl ve Projelerimiz yönlendirmeleri
+- 📝 **Üyelik formu** – Google Form bağlantısı
+- 📋 **Komite başvuru formu** – Ekip seçimleri için
+- 💬 **Instagram iletişim** – Hızlı iletişim linki
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## İletişim
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- 🐦 [Twitter / X](https://x.com/gtublockchain)
+- 📸 [Instagram](https://www.instagram.com/gtublockchain/)
+- 💼 [LinkedIn](https://www.linkedin.com/company/gtublockchain/)
+- 📺 [TikTok](https://www.tiktok.com/@gtublockchain)
+- 💻 [GitHub](https://github.com/GTU-Blockchain)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+© 2025 GTU Blockchain Community. Tüm hakları saklıdır.
