@@ -18,9 +18,14 @@ interface Competition {
 
 const competitions = competitionsData as Competition[];
 
+interface TooltipData {
+  country: string;
+  events: { eventName: string; projects: { projectName: string; emoji: string }[] }[];
+}
+
 const MapSection = () => {
   const { language, t } = useLanguage();
-  const [tooltipContent, setTooltipContent] = useState<string>('');
+  const [tooltipData, setTooltipData] = useState<TooltipData | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const competitionsByCountry = useMemo(() => {
@@ -70,31 +75,30 @@ const MapSection = () => {
       competitionsByEvent[key].push(c);
     });
 
-    // Build tooltip content
-    const lines: string[] = [];
     const firstComp = countryCompetitions[0];
-    lines.push(firstComp.country[lang]); // Ülke
-    
-    Object.entries(competitionsByEvent).forEach(([eventName, comps]) => {
-      lines.push(eventName); // Yarışma adı
-      comps.forEach((c) => {
-        const emoji = getAwardEmoji(c.awardType);
-        lines.push(`${c.projectName} ${emoji}`); // Proje adı + emoji
-      });
-    });
+    const events = Object.entries(competitionsByEvent).map(([eventName, comps]) => ({
+      eventName,
+      projects: comps.map((c) => ({
+        projectName: c.projectName,
+        emoji: getAwardEmoji(c.awardType),
+      })),
+    }));
 
-    setTooltipContent(lines.join('\n'));
+    setTooltipData({
+      country: firstComp.country[lang],
+      events,
+    });
     setTooltipPosition({ x: evt.clientX, y: evt.clientY });
   };
 
   const handleMouseMove = (evt: React.MouseEvent) => {
-    if (tooltipContent) {
+    if (tooltipData) {
       setTooltipPosition({ x: evt.clientX, y: evt.clientY });
     }
   };
 
   const handleMouseLeave = () => {
-    setTooltipContent('');
+    setTooltipData(null);
   };
 
   return (
@@ -164,16 +168,27 @@ const MapSection = () => {
             </Geographies>
           </ComposableMap>
 
-          {tooltipContent && (
+          {tooltipData && (
             <div
-              className="fixed z-50 px-4 py-3 bg-navy-dark text-white text-sm rounded-xl shadow-2xl max-w-sm pointer-events-none whitespace-pre-line"
+              className="fixed z-50 px-4 py-3 bg-navy-dark text-white text-sm rounded-xl shadow-2xl max-w-sm pointer-events-none"
               style={{
                 left: Math.min(tooltipPosition.x + 15, window.innerWidth - 320),
                 top: Math.min(tooltipPosition.y + 15, window.innerHeight - 250),
               }}
             >
-              <div className="font-bold text-primary mb-2">{t('map.tooltipTitle')}</div>
-              {tooltipContent}
+              <div className="font-bold text-primary mb-2">{tooltipData.country}</div>
+              <div className="space-y-1.5">
+                {tooltipData.events.map((event) => (
+                  <div key={event.eventName}>
+                    <div className="font-bold text-white">{event.eventName}</div>
+                    {event.projects.map((p) => (
+                      <div key={p.projectName} className="ml-2 text-white/90">
+                        {p.projectName} {p.emoji}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

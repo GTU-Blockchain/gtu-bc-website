@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import statsData from '../data/stats.json';
 
@@ -8,6 +8,8 @@ interface TeamMember {
   telegram?: string;
 }
 
+type AwardType = 'first' | 'second' | 'third' | 'pool';
+
 interface Achievement {
   id: number;
   titleKey: string;
@@ -15,6 +17,7 @@ interface Achievement {
   date: string;
   project: string;
   awardKey: string;
+  awardType?: AwardType;
   descriptionKey: string;
   image?: string;
   flag: string;
@@ -38,6 +41,16 @@ interface Stats {
 
 const stats = statsData as Stats;
 
+const getAwardEmoji = (awardType: AwardType): string => {
+  switch (awardType) {
+    case 'first': return '🥇';
+    case 'second': return '🥈';
+    case 'third': return '🥉';
+    case 'pool': return '🏅';
+    default: return '';
+  }
+};
+
 const achievements: Achievement[] = [
   {
     id: 1,
@@ -46,6 +59,7 @@ const achievements: Achievement[] = [
     date: "2025",
     project: "BitBrawlers",
     awardKey: "achievement.ethrome.award",
+    awardType: "pool",
     descriptionKey: "achievement.ethrome.description",
     image: "/achievements/roma.jpeg",
     flag: "🇮🇹",
@@ -69,6 +83,7 @@ const achievements: Achievement[] = [
     date: "2025",
     project: "Cryptle",
     awardKey: "achievement.ethistanbul.award",
+    awardType: "first",
     descriptionKey: "achievement.ethistanbul.description",
     image: "/achievements/istanbul.jpeg",
     flag: "🇹🇷",
@@ -98,6 +113,7 @@ const achievements: Achievement[] = [
     date: "2024",
     project: "Vaultify",
     awardKey: "achievement.ethprague1.award",
+    awardType: "pool",
     descriptionKey: "achievement.ethprague1.description",
     image: "/achievements/prag.jpeg",
     flag: "🇨🇿",
@@ -120,6 +136,7 @@ const achievements: Achievement[] = [
     date: "2024",
     project: "ChronoTrade",
     awardKey: "achievement.ethprague2.award",
+    awardType: "pool",
     descriptionKey: "achievement.ethprague2.description",
     image: "/achievements/prag.jpeg",
     flag: "🇨🇿",
@@ -185,6 +202,16 @@ const AchievementsSection = () => {
     setActiveGalleryIndex(0);
   };
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedAchievement(null);
+    };
+    if (selectedAchievement) {
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [selectedAchievement]);
+
   return (
     <section className="py-24 bg-gradient-to-b from-background-light to-white" id="achievements">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,9 +250,9 @@ const AchievementsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent" />
                 
                 {/* Award Badge */}
-                {achievement.awardKey && (
+                {achievement.awardKey && achievement.awardType && (
                   <div className="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-lg">
-                    🏆
+                    {getAwardEmoji(achievement.awardType)}
                   </div>
                 )}
 
@@ -346,6 +373,7 @@ const AchievementsSection = () => {
                 {selectedAchievement.awardKey && (
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold px-4 py-2 rounded-full mb-6 shadow-lg">
                     <span className="material-symbols-outlined">emoji_events</span>
+                    {selectedAchievement.awardType && getAwardEmoji(selectedAchievement.awardType)}{' '}
                     {t(selectedAchievement.awardKey)}
                   </div>
                 )}
