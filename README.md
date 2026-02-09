@@ -1,8 +1,10 @@
 # GTU Blockchain – Resmi Web Sitesi
 
-[Gebze Teknik Üniversitesi](https://www.gtu.edu.tr/) blokzincir odaklı teknoloji ve inovasyon topluluğu **GTU Blockchain**'in resmi web sitesidir.
+<p align="center">
+<img src="public/images/gtub-symbol-white.png" width="256" align="center">
+</p>
 
-![GTU Blockchain](public/images/gtub-symbol-white.png)
+[Gebze Teknik Üniversitesi](https://www.gtu.edu.tr/) blokzincir odaklı teknoloji ve inovasyon topluluğu **GTU Blockchain**'in resmi web sitesidir.
 
 ## Hakkımızda
 
