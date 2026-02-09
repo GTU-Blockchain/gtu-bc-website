@@ -95,7 +95,7 @@ function App() {
             <div className="flex-shrink-0 flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-navy-dark to-primary rounded-lg flex items-center justify-center">
                 <img
-                  src="/images/gtub-symbol-white.png"
+                  src="images/gtub-symbol-white.png"
                   alt="GTU Blockchain Logo"
                   className="w-13 h-13 object-contain"
                 />
@@ -275,7 +275,7 @@ function App() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg backdrop-blur-sm border border-white/10">
                   <img
-                    src="/images/gtub-symbol-white.png"
+                    src="images/gtub-symbol-white.png"
                     alt="GTU Blockchain Logo"
                     className="w-full h-full object-contain"
                   />
