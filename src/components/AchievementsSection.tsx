@@ -61,9 +61,9 @@ const achievements: Achievement[] = [
     awardKey: "achievement.ethrome.award",
     awardType: "pool",
     descriptionKey: "achievement.ethrome.description",
-    image: "/achievements/roma.jpeg",
+    image: "achievements/roma.jpeg",
     flag: "🇮🇹",
-    gallery: ["/achievements/roma.jpeg"],
+    gallery: ["achievements/roma.jpeg"],
     github: "https://github.com/GTU-Blockchain/bitbrawlers-ethrome-2025",
     taikai: "https://taikai.network/ethrome/hackathons/2025/projects/cmgx8dls101x68697ibhzz9g7/idea",
     team: [
@@ -85,11 +85,11 @@ const achievements: Achievement[] = [
     awardKey: "achievement.ethistanbul.award",
     awardType: "first",
     descriptionKey: "achievement.ethistanbul.description",
-    image: "/achievements/istanbul.jpeg",
+    image: "achievements/istanbul.jpeg",
     flag: "🇹🇷",
     gallery: [
-      "/achievements/cryptle/cryptle-web1.png",
-      "/achievements/cryptle/cryptle-web2.png"
+      "achievements/cryptle/cryptle-web1.png",
+      "achievements/cryptle/cryptle-web2.png"
     ],
     github: "https://github.com/GTU-Blockchain/cryptle-ethistanbul-2025",
     taikai: "https://taikai.network/ethistanbul/hackathons/ethistanbul-2025/projects/cmf8wq4jo01qbsiblp23cz5ne/idea",
@@ -115,9 +115,9 @@ const achievements: Achievement[] = [
     awardKey: "achievement.ethprague1.award",
     awardType: "pool",
     descriptionKey: "achievement.ethprague1.description",
-    image: "/achievements/prag.jpeg",
+    image: "achievements/prag.jpeg",
     flag: "🇨🇿",
-    gallery: ["/achievements/prag.jpeg"],
+    gallery: ["achievements/prag.jpeg"],
     github: "https://ethglobal.com/showcase/vaultify-cw3ow",
     taikai: "https://drive.google.com/file/d/1RP0pTwoLdm5YjLSB2nLALqWEJtSFB3e3/view?usp=sharing",
     team: [
@@ -138,9 +138,9 @@ const achievements: Achievement[] = [
     awardKey: "achievement.ethprague2.award",
     awardType: "pool",
     descriptionKey: "achievement.ethprague2.description",
-    image: "/achievements/prag.jpeg",
+    image: "achievements/prag.jpeg",
     flag: "🇨🇿",
-    gallery: ["/achievements/prag.jpeg"],
+    gallery: ["achievements/prag.jpeg"],
     github: "https://ethglobal.com/showcase/chronotrade-yoxnf",
     team: [
       { name: "Yusuf Alperen Çelik", role: "Developer", telegram: "@AlteasV" },

@@ -20,7 +20,7 @@ const TeamMemberCard = ({ name, position, image, social }: TeamMemberCardProps) 
                 <div className="absolute top-1 right-1 z-20 overflow-visible pointer-events-none">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out">
                         <img
-                            src="/images/gtub-symbol-white.png"
+                            src="images/gtub-symbol-white.png"
                             alt="GTU Icon"
                             className="w-24 h-24 object-contain drop-shadow-sm opacity-90"
                         />

@@ -3,7 +3,7 @@
         "id": "yonetim-kurulu-baskani",
         "name": "Eren YILMAZ",
         "position": "Yönetim Kurulu Başkanı",
-        "image": "/achievements/BoardOfDirectors/eren.jpg",
+        "image": "achievements/BoardOfDirectors/eren.jpg",
         "social": {
             "linkedin": "https://linkedin.com.tr",
             "email": "https://google.com"
@@ -13,7 +13,7 @@
         "id": "yonetim-kurulu-baskan-yardimcisi",
         "name": "Yusuf Alperen ÇELİK",
         "position": "Yönetim Kurulu Başkan Yardımcısı",
-        "image": "/achievements/BoardOfDirectors/alperen.jpeg",
+        "image": "achievements/BoardOfDirectors/alperen.jpeg",
         "social": {
             "linkedin": "https://linkedin.com.tr",
             "email": "https://google.com"
@@ -23,7 +23,7 @@
         "id": "sosyal-medya-ekibi-baskani",
         "name": "Yağmur MERAL",
         "position": "Sosyal Medya Ekibi Başkanı",
-        "image": "/achievements/BoardOfDirectors/yagmur.jpg",
+        "image": "achievements/BoardOfDirectors/yagmur.jpg",
         "social": {
             "linkedin": "https://linkedin.com.tr",
             "email": "https://google.com"
@@ -33,7 +33,7 @@
         "id": "yazilim-ekibi-baskani",
         "name": "Umut SATIR",
         "position": "Yazılım Ekibi Başkanı",
-        "image": "/achievements/BoardOfDirectors/umut.jpeg",
+        "image": "achievements/BoardOfDirectors/umut.jpeg",
         "social": {
             "linkedin": "https://linkedin.com.tr",
             "email": "https://google.com"
@@ -43,7 +43,7 @@
         "id": "finans-koordinatoru",
         "name": "Salih CENGİZ",
         "position": "Finans Koordinatörü",
-        "image": "/achievements/BoardOfDirectors/salih.jpeg",
+        "image": "achievements/BoardOfDirectors/salih.jpeg",
         "social": {
             "linkedin": "https://linkedin.com.tr",
             "email": "https://google.com"
