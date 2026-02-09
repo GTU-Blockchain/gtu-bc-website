@@ -311,6 +311,7 @@ function App() {
                 <li><button type="button" onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.about')}</button></li>
                 <li><button type="button" onClick={() => scrollToTop()} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.eventCalendar')}</button></li>
                 <li><button type="button" onClick={() => scrollToTop()} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.blog')}</button></li>
+                <li><button type="button" onClick={() => scrollToTop()} className="hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left p-0 text-inherit font-inherit">{t('footer.notionRoadmap')}</button></li>
               </ul>
             </div>
             {/* Contact Info */}
