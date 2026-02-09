@@ -5,8 +5,8 @@
         "position": "Yönetim Kurulu Başkanı",
         "image": "achievements/BoardOfDirectors/eren.jpg",
         "social": {
-            "linkedin": "https://linkedin.com.tr",
-            "email": "https://google.com"
+            "linkedin": "https://linkedin.com/in/erenylmz/",
+            "email": ""
         }
     },
     {
@@ -15,8 +15,8 @@
         "position": "Yönetim Kurulu Başkan Yardımcısı",
         "image": "achievements/BoardOfDirectors/alperen.jpeg",
         "social": {
-            "linkedin": "https://linkedin.com.tr",
-            "email": "https://google.com"
+            "linkedin": "https://linkedin.com/in/yusufalperencelik/",
+            "email": "ysfalperen.celik@gmail.com"
         }
     },
     {
@@ -25,8 +25,8 @@
         "position": "Sosyal Medya Ekibi Başkanı",
         "image": "achievements/BoardOfDirectors/yagmur.jpg",
         "social": {
-            "linkedin": "https://linkedin.com.tr",
-            "email": "https://google.com"
+            "linkedin": "https://linkedin.com/in/yagmurmeral/",
+            "email": "yagmurrmeral@gmail.com"
         }
     },
     {
@@ -35,8 +35,8 @@
         "position": "Yazılım Ekibi Başkanı",
         "image": "achievements/BoardOfDirectors/umut.jpeg",
         "social": {
-            "linkedin": "https://linkedin.com.tr",
-            "email": "https://google.com"
+            "linkedin": "https://linkedin.com/in/umutsatir/",
+            "email": "umutstr54@gmail.com"
         }
     },
     {
@@ -45,8 +45,8 @@
         "position": "Finans Koordinatörü",
         "image": "achievements/BoardOfDirectors/salih.jpeg",
         "social": {
-            "linkedin": "https://linkedin.com.tr",
-            "email": "https://google.com"
+            "linkedin": "https://linkedin.com/in/salihcengiz/",
+            "email": "scengiz232002@gmail.com"
         }
     }
 ]
